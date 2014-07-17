@@ -32,11 +32,11 @@
 </div><!-- /.sidebar-shortcuts -->
 
 <ul class="nav nav-list">
-	<li class="">
+	<li class="<%=_sidebar_active("menu.system")%>">
 		<%=_sidebar_menu('menu.system','fa-file-text-o','#url')%>
 	</li>
 
-	<li class="">
+	<li class="<%=_sidebar_active("menu.staff","open")%>">
 		<%=_sidebar_menu('menu.staff','fa-users','')%>
 		<ul class="submenu">
 			<%=_sidebar_submenu('staff.injob','')%>
@@ -45,10 +45,10 @@
 		</ul>
 	</li>
 
-	<li class="">
+	<li class="<%=_sidebar_active("menu.project","open")%>">
 		<%=_sidebar_menu('menu.project','fa-institution')%>
 		<ul class="submenu">
-			<%=_sidebar_submenu('project.my','')%>
+			<%=_sidebar_submenu('project.my',project_incomes_url)%>
 			<%=_sidebar_submenu('project.finance','')%>
 			<%=_sidebar_submenu('project.audit','')%>
 			<%=_sidebar_submenu('project.search','')%>
@@ -56,20 +56,20 @@
 		</ul>
 	</li>
 
-	<li class="">
+	<li class="<%=_sidebar_active("menu.payslip")%>">
 		<%=_sidebar_menu('menu.payslip','fa-cny','#url')%>
 	</li>
 
-	<li class="">
+	<li class="<%=_sidebar_active("menu.sms")%>">
 		<%=_sidebar_menu("menu.sms",'fa-paper-plane-o','#url')%>
 	</li>
 
-	<li class="">
+	<li class="<%=_sidebar_active("menu.notice")%>">
 		<%=_sidebar_menu("menu.notice",'fa-circle-o-notch','#url')%>
 	</li>
 
-	<li class="">
-		<%=_sidebar_menu("menu.item",'fa-cab','#url')%>
+	<li class="<%=_sidebar_active("menu.item")%>">
+		<%=_sidebar_menu("menu.item",'fa-cab',base_items_url)%>
 	</li>
 	
 </ul><!-- /.nav-list -->

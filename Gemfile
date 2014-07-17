@@ -5,7 +5,7 @@ gem 'kaminari'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'jquery-rails'
-
+gem 'carrierwave'
 gem 'rails', '4.1.4'
 gem 'mysql2'
 

@@ -1,4 +1,9 @@
 module ApplicationHelper
+	def _sidebar_active(name,open=nil)
+		if t("sidebar.#{name}") == @sidebar
+			open ? 'active open' : 'active' 
+		end
+	end
 	def _sidebar_menu(name,icon,url='')
 		cls = arrow = ''
 		html = []
@@ -15,9 +20,10 @@ module ApplicationHelper
 		return raw html.join('')
 	end
 	def _sidebar_submenu(name,url)
+		active = t("sidebar.#{name}") == @submenu ? 'active' : ''
 		html = []
-		html << "<li class=''>"
-		html << "<a href=''><i class='menu-icon fa fa-caret-right'></i>"
+		html << "<li class='#{active}'>"
+		html << "<a href='#{url}'><i class='menu-icon fa fa-caret-right'></i>"
 		html << t("sidebar.#{name}")
 		html << "</a><b class='arrow'></b></li>"
 		return raw html.join('')

@@ -2,3 +2,4 @@ ACE
 *.sql
 *.log
 database.yml
+_setting.rb

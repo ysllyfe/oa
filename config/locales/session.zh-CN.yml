@@ -1,0 +1,11 @@
+"zh-CN":
+  session:
+    login_info: "请输入您的个人信息"
+    login_btn: "登陆系统"
+    login_username: "姓名"
+    login_passwd: "登陆密码"
+    reset_password: "重设个人密码"
+    reset_info: "请输入您的手机号，密码由短信发送给您"
+    reset_input: "手机号码"
+    reset_btn: "发送给我"
+    reset_back: "返回登陆界面"

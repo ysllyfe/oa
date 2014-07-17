@@ -1,4 +1,13 @@
 "zh-CN":
+  setting:
+    home: "首页"
+    company_name: "龙杰钢贸"
+    appname: "OA系统"
+  login:
+    error_404: "对不起，用户不存在"
+    error_400: "用户密码不正确"
+    error_202: "用户认证成功"
+    error_500: "用户帐户被禁，请联系管理员"
   sidebar:
     menu:
       staff: "员工管理"

@@ -5,6 +5,29 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+
+
+
+  namespace :base do
+    resources :items,:factories,:fee,:steeltype
+  end
+  namespace :project do
+    resources :incomes,:search,:audit,:finance,:infos
+  end
+
+
+
+  get 'session/login'
+  post 'session/login' => 'session#login!'
+  
+  get 'session/timeout'
+  post 'session/timeout' => 'session#timeout!'
+
+  get 'session/deny'
+  get 'session/logout'
+  get 'session/forgetpasswd'
+  post 'session/resetpasswd'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

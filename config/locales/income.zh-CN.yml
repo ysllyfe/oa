@@ -1,0 +1,14 @@
+"zh-CN":
+  income:
+    add: "添加新的利润表"
+    table:
+      id:
+        tname: "利润表编号"
+        class: "hidden-480"
+      time: "送货日期"
+      name: "工地项目名称"
+      user:
+        tname: "送货人"
+        class: "hidden-480"
+      status: "状态"
+      operate: "操作"
