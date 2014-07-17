@@ -1,0 +1,20 @@
+"zh-CN":
+  sidebar:
+    menu:
+      staff: "员工管理"
+      project: "工程管理"
+      system: "公司制度"
+      payslip: "工资管理"
+      sms: "短信平台"
+      notice: "通知平台"
+      item: "项目管理"
+    staff:
+      injob: "在职员工档案"
+      audit: "需审核员工档案"
+      outwork: "离职员工"
+    project:
+      my: "我的利润表"
+      search: "工程款查询"
+      audit: "利润表审核"
+      finance: "利润表查询"
+      info: "合同摘要"
