@@ -1,0 +1,56 @@
+<div class="page-header">
+	<h1>
+		<%=t("sidebar.menu.item")%>
+	</h1>
+</div>
+
+<div class="row">
+<div class="col-xs-12">
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="#item" data-toggle="tab">
+				<i class="green ace-icon fa fa-home bigger-120 hidden-480"></i>
+				<%=t("base.item.name")%>
+			</a>
+		</li>
+		<li class="">
+			<a href="#factory" data-toggle="tab">
+				<i class="green ace-icon fa fa-globe bigger-120 hidden-480"></i>
+				<%=t("base.factory.name")%>
+			</a>
+		</li>
+		<li class="">
+			<a href="#steeltype" data-toggle="tab">
+				<i class="green ace-icon fa fa-cubes bigger-120 hidden-480"></i>
+				<%=t("base.steeltype.name")%>
+			</a>
+		</li>
+		<li class="">
+			<a href="#fee" data-toggle="tab">
+				<i class="green ace-icon fa fa-cny bigger-120 hidden-480"></i>
+				<%=t("base.fee.name")%>
+			</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="item">
+<%=render 'item'%>
+		</div>
+
+		<div class="tab-pane" id="factory">
+<%=render 'factory'%>	
+		</div>
+
+		<div class="tab-pane" id="steeltype">
+<%=render 'steeltype'%>
+		</div>
+
+		<div class="tab-pane" id="fee">
+<%=render 'fee'%>
+		</div>
+	</div>
+</div>
+</div>
+</div>

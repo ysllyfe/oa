@@ -3,3 +3,5 @@ ACE
 *.log
 database.yml
 _setting.rb
+db/schema.rb
+db/migrate/*

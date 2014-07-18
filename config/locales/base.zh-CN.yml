@@ -1,0 +1,25 @@
+"zh-CN":
+  base:
+    item:
+      name: "工程项目"
+      table:
+        id:
+          tname: "编号"
+          class: "hidden-480"
+        company: 
+          tname: "分公司"
+          class: "hidden-480"
+        name: "项目名称"
+        operate: "操作"
+        incomelist:
+          tname:  "送货单列表"
+          class: "hidden-480"
+        financelist:
+          tname: "财务列表"
+          class: "hidden-480"
+    factory:
+      name: "厂家"
+    steeltype:
+      name: "型号"
+    fee:
+      name: "费用"
