@@ -1,0 +1,42 @@
+<div class="widget-container-col ui-sortable">
+	<!-- #section:custom/widget-box -->
+	<div class="widget-box">
+		<div class="widget-header">
+			<h5 class="widget-title"><%=t("trucks.title")%></h5>
+		</div>
+
+		<div class="widget-body">
+			<div class="widget-main">
+<%=form_for [:project,@truck],:html=>{:class=>"form-horizontal"} do |f|%>				
+<div class="form-group">
+	<label class="col-sm-2 control-label no-padding-right"><%=t("trucks.pai")%></label>
+
+	<div class="col-sm-10">
+		<!-- #section:elements.form.input-icon -->
+<%=f.text_field :s1,:class=>'col-xs-1',:placeholder=>t("trucks.s1")%>
+<%=f.text_field :s2,:class=>'col-xs-1',:placeholder=>t("trucks.s2")%>
+<%=f.text_field :s3,:class=>'col-xs-5',:placeholder=>t("trucks.s3")%>
+		<!-- /section:elements.form.input-icon -->
+	</div>
+</div>
+<h3 class="header smaller lighter red"><%=t('trucks.type')%></h3>
+
+<div class="row" id="type_box">
+<%=render 'type'%>
+</div>
+<a href="###" class="btn btn-block btn-info _addtypes"><%=t("trucks.addtypes")%></a>
+<hr />
+
+
+<div class="well">
+	<h4 class="green smaller lighter">Normal Well</h4>
+	Use the well as a simple effect on an element to give it an inset effect.
+</div>
+
+<% end %>
+			</div>
+		</div>
+	</div>
+
+	<!-- /section:custom/widget-box -->
+</div>

@@ -1,6 +1,24 @@
 "zh-CN":
+  trucks:
+    title: "利润表车辆管理"
+    pai: "车牌号"
+    s1: "粤"
+    s2: "A"
+    s3: "12345"
+    type: "所运货物"
+    steeltype: "型号"
+    factory: "厂家"
+    format: "规格"
+    weight: "重量"
+    price: "单价"
+    addtypes: "添加货物种类"
   income:
     add: "添加新的利润表"
+    step_1: "提交基本信息并进入下一步"
+    status:
+      submit: "已提交"
+      checked: "已审核"
+      not_submit: "未提交"
     table:
       id:
         tname: "利润表编号"

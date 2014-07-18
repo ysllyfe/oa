@@ -13,7 +13,8 @@
 		<link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
 
 		<!-- page specific plugin styles -->
-
+		<link rel="stylesheet" href="/assets/css/chosen.css" />
+		<link rel="stylesheet" href="/assets/css/datepicker.css" />
 		<!-- text fonts -->
 		<link rel="stylesheet" href="/assets/css/ace-fonts.css" />
 
@@ -55,11 +56,12 @@
 		</script>
 		<script src="/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/js/jquery_ujs.js"></script>
-		
+		<script type="text/javascript" src="/js/jquery-powerFloat-min.js"></script>
+		<link rel="stylesheet" href="/css/powerFloat.css" />
 <%= csrf_meta_tags %>
 	</head>
 
-	<body class="no-skin">
+	<body class="skin-2">
 		<!-- #section:basics/navbar.layout -->
 		<div id="navbar" class="navbar navbar-default navbar-fixed-top">
 <%=render 'navbar'%>
@@ -93,6 +95,10 @@
 <%=render 'footer'%>
 		</div><!-- /.main-container -->
 		<!-- page specific plugin scripts -->
+
+		<script src="/assets/js/chosen.jquery.min.js"></script>
+		<script src="/assets/js/date-time/bootstrap-datepicker.min.js"></script>
+
 		<!-- ace scripts -->
 		<script src="/assets/js/ace-elements.min.js"></script>
 		<script src="/assets/js/ace.min.js"></script>

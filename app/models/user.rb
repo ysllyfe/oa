@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 	mount_uploader :photos, AvatarUploader
 
 
+	has_many :incomes
+
 
 	before_save :encrypt_password
 
