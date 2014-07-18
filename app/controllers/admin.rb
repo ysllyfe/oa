@@ -4,7 +4,7 @@ class Admin < ApplicationController
 	before_filter :set_sidebar_breadcrumbs
 	before_filter :set_controller_sidebar
 
-	rescue_from ActionView::MissingTemplate,:with => :tmp_tpl
+	#rescue_from ActionView::MissingTemplate,:with => :tmp_tpl
 	def _back(msg=nil)
 		flash[:notice] = msg
 		redirect_to request.env['HTTP_REFERER'] and return

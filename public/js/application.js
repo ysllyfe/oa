@@ -5,6 +5,7 @@ function ajax_frame_layout(obj){
 	    border: [0],
 	    title: false,
 	    shadeClose: true,
+	    offset: ['50px', ''],
 	    iframe: {src : $(obj).attr('href')},
 	    area: [ w , '30px']
 	});

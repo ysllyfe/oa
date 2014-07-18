@@ -1,0 +1,33 @@
+<div class="widget-box">
+	<div class="widget-header">
+		<h5 class="widget-title"><%=t("base.fee.name")%></h5>
+	</div>
+
+	<div class="widget-body">
+		<div class="widget-main">
+<%=form_for @fee,:url=>@url,:remote=>true do |f|%>
+<div>
+<label>
+<%=t("base.fee.table.name")%>
+</label>
+<%=f.text_field :name,:class=>"form-control"%>
+</div>
+
+
+<div class="clearfix form-actions">
+	<div class="">
+		<button type="submit" class="btn btn-info btn-block">
+			<i class="ace-icon fa fa-check bigger-110"></i>
+			<%=t("submit")%>
+		</button>
+
+	</div>
+</div>
+
+<% end %>
+
+
+
+		</div>
+	</div>
+</div>

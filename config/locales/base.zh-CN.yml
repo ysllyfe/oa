@@ -19,7 +19,19 @@
           class: "hidden-480"
     factory:
       name: "厂家"
+      table:
+        id: "编号"
+        name: "厂家"
+        operate: "操作"
     steeltype:
       name: "型号"
+      table:
+        id: "编号"
+        name: "型号"
+        operate: "操作"
     fee:
       name: "费用"
+      table:
+        id: "编号"
+        name: "费用项目"
+        operate: "操作"
