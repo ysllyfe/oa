@@ -4,6 +4,11 @@ class Project::IncomesController < Project
 		@incomes = @logged_in_user.incomes.where(checked:false).order('id desc')
 	end
 
+	def original
+		@income = Income.find(params[:id])
+		@trucks = @income.trucks
+	end
+
 	def new
 		@income = Income.new
 		@items = Item.where(softdelete:false,ended:false).order('id desc')

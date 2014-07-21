@@ -6,7 +6,7 @@
 			常规费用
 		</h5>
 <div class="widget-toolbar">
-	<a href="<%=new_project_fee_url%>" class="ajax_iframe">
+	<a href="<%=new_project_fee_url(:income=>@income.id)%>" class="ajax_iframe">
 		<i class="ace-icon fa fa-plus"></i>
 	</a>
 </div>
@@ -31,7 +31,14 @@
 <tr>
 <td><%=f.fee_type.name%></td>
 <td><%=f.cost%></td>
-<td><a href="<%=edit_project_fee_url(f)%>" class="ajax_iframe">修改</a></td>
+<td>
+<a href="<%=edit_project_fee_url(f)%>" class="btn btn-xs btn-info ajax_iframe">
+<i class="ace-icon fa fa-pencil bigger-120"></i>
+</a>
+<a rel="nofollow" data-confirm="确认删除？" data-method="delete" href="<%=project_fee_url(f)%>" class="btn btn-xs btn-danger">
+<i class="ace-icon fa fa-trash-o bigger-120"></i>
+</a>
+</td>
 </tr>
 <% end %>
 				</tbody>

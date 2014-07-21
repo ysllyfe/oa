@@ -1,0 +1,45 @@
+<div class="page-header">
+<h1>
+<%=t("sidebar.project.my")%>
+<small>
+<i class="ace-icon fa fa-angle-double-right"></i>
+<%=t("trucks.title")%>
+</small>
+</h1>
+</div>
+<div class="row">
+<div class="col-xs-12">
+<blockquote>
+<p>
+	<%=@income.item.name%>
+</p>
+<p>
+送货日期：<%=@income.time%> ， 送货人员：<%=_delvery_user(@income.users)%>
+</p>
+
+</blockquote>
+<%=_income_step(@income.id,@steps,5)%>
+<hr />
+</div>
+</div>
+
+<div class="row">
+<div class="col-xs-12">
+<h4>原始磅单 <small>非纯线材磅单，运货重量仅供参考</small></h4>
+<hr />
+<%=render 'original_trucks'%>
+
+<h4>销售情况汇总</h4>
+<hr />
+
+
+
+<h4>其它费用</h4>
+<hr />
+
+
+<h4>合计</h4>
+<hr />
+
+</div>
+</div>

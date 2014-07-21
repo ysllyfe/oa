@@ -1,0 +1,7 @@
+<div class="row">
+										
+<%@trucks.each do |truck|%>
+<%=render :partial=>'piece_truck',:locals=>{:truck=>truck}%>
+<% end %>
+
+</div>

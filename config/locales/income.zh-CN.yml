@@ -12,6 +12,15 @@
     weight: "重量"
     price: "单价"
     addtypes: "添加货物种类"
+    original_table:
+      factory: "厂家"
+      type: "型号"
+      format: "规格"
+      weight: "原始数量"
+      price: "单价"
+      total: 
+        tname: "小计"
+        class: "hidden-480"
   income:
     add: "添加新的利润表"
     step_1: "提交基本信息并进入下一步"

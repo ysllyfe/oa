@@ -8,4 +8,5 @@ class Income < ActiveRecord::Base
 	has_many :sells,:foreign_key => "income_statement_id",dependent: :destroy
 	has_many :fees,:foreign_key => "income_statement_id",dependent: :destroy
 	has_many :fee_sells,:foreign_key => "income_statement_id",dependent: :destroy
+	has_many :income_costs,:foreign_key => "income_statement_id",dependent: :destroy
 end

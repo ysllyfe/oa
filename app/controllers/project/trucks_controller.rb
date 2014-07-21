@@ -45,7 +45,8 @@ class Project::TrucksController < Project
 		@truck = Truck.find(params[:id])
 		@income_id = @truck.income_statement_id
 		@truck.destroy
-		redirect_to project_trucks_url(:income=>@income_id) and return
+		_back()
+		#redirect_to project_trucks_url(:income=>@income_id) and return
 	end
 
 	def new_truck
