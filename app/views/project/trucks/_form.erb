@@ -7,7 +7,8 @@
 
 		<div class="widget-body">
 			<div class="widget-main">
-<%=form_for [:project,@truck],:html=>{:class=>"form-horizontal"} do |f|%>				
+<%=form_for [:project,@truck],:html=>{:class=>"form-horizontal"} do |f|%>
+<input type="hidden" value="<%=@income.id%>" name="income_id" />
 <div class="form-group">
 	<label class="col-sm-2 control-label no-padding-right"><%=t("trucks.pai")%></label>
 
@@ -20,19 +21,46 @@
 	</div>
 </div>
 <h3 class="header smaller lighter red"><%=t('trucks.type')%></h3>
-
 <div class="row" id="type_box">
+<% if @costs %>
+<% @costs.each do |cost|%>
+<%=render :partial=>'type',:locals=>{:@cost=>cost}%>
+<% end %>
+<% else %>
 <%=render 'type'%>
+<% end %>
 </div>
 <a href="###" class="btn btn-block btn-info _addtypes"><%=t("trucks.addtypes")%></a>
 <hr />
-
-
 <div class="well">
-	<h4 class="green smaller lighter">Normal Well</h4>
-	Use the well as a simple effect on an element to give it an inset effect.
-</div>
+此车共载重：
+<%=f.text_field :weight,:id=>"_weight",:name=>"_weight",:class=>'input-small',:readonly=>'readonly'%>
+<hr />
+包车?
+<%=f.check_box :chartered,:class=>'ace ace-switch ace-switch-5' %>
+<span class="lbl middle"></span>
+<span id="_m_baoche" style="<%=@truck.chartered == false ? "" : 'display:none' if @truck%>">
+单价：
+<%=f.text_field :price,:name=>"_m_baoche_price",:id=>"_m_baoche_price",:class=>'input-small'%>
+元/吨，
+总运费：
+<%=f.text_field :cost,:name=>"_m_baoche_total",:id=>"_m_baoche_total",:class=>'input-small',:readonly=>"readonly"%>元。
+</span>
+<span id="_y_baoche" style="<%=@truck.chartered == true ? "" : 'display:none' if @truck%>" >
+包车价格：
+<%=f.text_field :cost,:name=>"_y_baoche_total",:id=>"_y_baoche_total",:class=>'input-small'%>元
+</span>
 
+
+</div>
+<div class="clearfix form-actions">
+	<div class="col-md-offset-3 col-md-9">
+		<button type="submit" class="btn btn-info">
+			<i class="ace-icon fa fa-check bigger-110"></i>
+			添加车辆
+		</button>
+	</div>
+</div>
 <% end %>
 			</div>
 		</div>

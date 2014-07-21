@@ -41,6 +41,9 @@ class Project::IncomesController < Project
 	end
 
 	def destroy
+		@income = Income.find(params[:id])
+		@income.destroy
+		redirect_to project_incomes_url
 	end
 
 	def set_submenu_and_breadcrumbs

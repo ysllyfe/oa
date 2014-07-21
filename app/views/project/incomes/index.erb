@@ -7,6 +7,9 @@
 		</small>
 	</h1>
 </div>
+
+
+
 <div class="row">
 <div class="col-xs-12">
 <h4>
@@ -42,13 +45,10 @@
 				<i class="ace-icon fa fa-pencil bigger-120"></i>
 			</a>
 
-			<button class="btn btn-xs btn-danger">
+			<a class="btn btn-xs btn-danger" href="<%=project_income_url(f)%>" data-method="delete" data-confirm="确认删除？" rel="nofollow">
 				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-			</button>
+			</a>
 
-			<button class="btn btn-xs btn-warning">
-				<i class="ace-icon fa fa-flag bigger-120"></i>
-			</button>
 		</div>
 
 		<div class="hidden-md hidden-lg">
@@ -67,7 +67,7 @@
 					</li>
 
 					<li>
-						<a title="" data-rel="tooltip" class="tooltip-success" href="#" data-original-title="Edit">
+						<a title="" data-rel="tooltip" class="tooltip-success" href="<%=edit_project_income_url(f)%>" data-original-title="Edit">
 							<span class="green">
 								<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 							</span>
@@ -75,7 +75,7 @@
 					</li>
 
 					<li>
-						<a title="" data-rel="tooltip" class="tooltip-error" href="#" data-original-title="Delete">
+						<a title="" data-method="delete" data-confirm="确认删除？" rel="nofollow" data-rel="tooltip" class="tooltip-error" href="<%=project_income_url(f)%>" data-original-title="Delete">
 							<span class="red">
 								<i class="ace-icon fa fa-trash-o bigger-120"></i>
 							</span>

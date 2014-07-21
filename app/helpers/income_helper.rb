@@ -18,4 +18,24 @@ module IncomeHelper
 		end
 
 	end
+	def _round(s,num=4)
+		s.to_s.to_f.round(num)
+	end
+
+	def _income_step(income_id,steps,step=1)
+		html = ''
+		html += '<div data-target="#step-container" id="fuelux-wizard">'
+		html += '<ul class="wizard-steps">'
+		steps.each do |f|
+			url = f[1]
+			url["_replays_"] = income_id.to_s
+			active = step == f[2] ? 'active' : ''
+			html += "<li class='#{active}'>"
+			html += '<a class="step" href="'+url+'">'+f[2].to_s+'</a>'
+			html += '<a class="title" href="'+url+'">'+f[0]+'</a>'
+			html += '</li>'
+		end
+		html += '</ul></div>'
+		raw html
+	end
 end

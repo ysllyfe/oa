@@ -10,6 +10,17 @@ $(document).delegate('.factory_choose','click',function(){
 	//console.log("factory_index:" + factory_index);
 });
 
+$(document).delegate('._del','click',function(){
+	$(this).parent().parent().parent().parent().remove();
+});
+$(document).delegate('.weight','change',function(){
+	var weight = 0;
+	$('.weight').each(function(){
+		weight += parseFloat($(this).val());
+	});
+	$('#_weight').val(weight);
+})
+
 $('#steeltypeBox a').bind('click',function(){
 	var text = $(this).text();
 	var id = $(this).attr('data-id');
@@ -30,4 +41,13 @@ $("._addtypes").bind('click',function(){
 			$(msg).appendTo($('#type_box'));
 		}
 	})
+});
+$('#_m_baoche_price').on('change',function(){
+	var w = parseFloat($('#_weight').val());
+	var p = parseFloat($(this).val());
+	$('#_m_baoche_total').val(w*p);
+})
+$('#truck_chartered').on('click', function(){
+	$('#_y_baoche').toggle();
+	$('#_m_baoche').toggle();
 });

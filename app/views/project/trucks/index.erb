@@ -7,8 +7,21 @@
 </small>
 </h1>
 </div>
+<div class="row">
+<div class="col-xs-12">
+<blockquote>
+<p>
+	<%=@income.item.name%>
+</p>
+<p>
+送货日期：<%=@income.time%> ， 送货人员：<%=_delvery_user(@income.users)%>
+</p>
 
-
+</blockquote>
+<%=_income_step(@income.id,@steps,2)%>
+<hr />
+</div>
+</div>
 <div class="row">
 <div class="col-sm-8">
 
@@ -16,5 +29,18 @@
 
 </div>
 <div class="col-sm-4">
+<a href="<%=project_trucks_url(:income=>@income.id)%>" class="btn btn-block btn-success">添加新车辆</a>
+<hr />
+<%=render "trucks"%>
+<hr />
+<ul class="pager">
+	<li class="previous">
+		<a href="<%=edit_project_income_url(@income.id)%>">← 上一步</a>
+	</li>
+
+	<li class="next">
+		<a href="<%=project_costs_url(:income=>@income.id)%>">下一步 →</a>
+	</li>
+</ul>
 </div>
 </div>

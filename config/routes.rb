@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :items,:factories,:fees,:steeltypes
   end
   namespace :project do
-    resources :incomes,:trucks,:search,:audit,:finance,:infos
+    resources :incomes,:trucks,:costs,:fees,:search,:audit,:finance,:infos
   end
 
 
