@@ -1,4 +1,23 @@
 "zh-CN":
+  income_cost:
+    cost_table:
+      type: "型号"
+      format: "规格"
+      factory:
+        tname: "厂家"
+        class: "hidden-480"
+      weight: "进货重量"
+      price:
+        tname: "进货价格"
+        class: "hidden-480"
+      cost: 
+        tname: "进货成本"
+        class: "hidden-480"
+      sell_weight: "销售重量"
+      sell_price: "销售价格(元)"
+      sell_total:
+        tname: "销售小计(元)"
+        class: "hidden-480"
   trucks:
     title: "利润表车辆管理"
     pai: "车牌号"

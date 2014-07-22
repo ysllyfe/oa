@@ -1,20 +1,6 @@
 <%= form_for :sell,:url=>project_costs_url(:income=>@income.id) do |f|%>
 <table class="table table-striped table-bordered table-hover" id="sample-table-1">
-	<thead>
-		<tr>
-
-			<th>型号</th>
-			<th>规格</th>
-			<th class="hidden-480">厂家</th>
-			<th>进货重量</th>
-			<th class="hidden-480">进货价格</th>
-			<th class="hidden-480">进货成本</th>
-			<th>销售数量</th>
-			<th>销售价格(元)</th>
-			<th class="hidden-480">销售小计(元)</th>
-		</tr>
-	</thead>
-
+<%=_simple_thead(t("income_cost.cost_table"))%>
 	<tbody>
 <% @sells.each do |t| %>
 <tr>

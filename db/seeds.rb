@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+#update item profit_rate and rebuild item profit
+include IncomeBase
+
+
+@items = Item.all
+@items.each do |item|
+	item_income_count(item)
+end

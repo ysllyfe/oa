@@ -1,0 +1,20 @@
+<h4>其它费用</h4>
+<ul class="item-list ui-sortable" id="tasks">
+<% @fees.each_with_index do |f,index| %>
+<li class="<%=@item_colors[index]%> clearfix">
+	<label class="inline">
+		<span class="lbl"><%=f.fee_type.name%> (<%=f.info%>) <%=f.cost%>元</span>
+	</label>
+</li>
+<% end %>
+</ul>
+<h4>费用冲抵 <small>加项，计入销售</small></h4>
+<ul class="item-list ui-sortable" id="tasks">
+<% @fee_sells.each_with_index do |f,index| %>
+<li class="<%=@item_colors[index]%> clearfix">
+	<label class="inline">
+		<span class="lbl"><%=f.info%> <%=f.cost%>元</span>
+	</label>
+</li>
+<% end %>
+</ul>

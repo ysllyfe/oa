@@ -4,9 +4,38 @@ class Project::IncomesController < Project
 		@incomes = @logged_in_user.incomes.where(checked:false).order('id desc')
 	end
 
+	def original!
+		#提交表单到审核
+		@income = @logged_in_user.incomes.find(params[:id])
+		@item = @income.item
+		@profit = Profit.new
+		@profit.weight = params[:weight]
+		@profit.iweight = params[:yweight]
+		@profit.price = params[:sell] #销售价格
+		@profit.profits = params[:lr]
+		@profit.item_name = @item.name
+		@profit.item_id = @item.id
+		@profit.time = @income.time
+		@profit.info = ''
+		if(@income.profit)
+			@income.profit.delete
+		end
+		@income.profit = @profit
+		@income.update_attribute(:submit,true)
+		redirect_to project_incomes_url and return
+	end
 	def original
+
+		@factories = Factory.where(softdelete:false).order('id asc')
+		@steeltypes = Steeltype.where(softdelete:false).order('id asc')
 		@income = Income.find(params[:id])
 		@trucks = @income.trucks
+		@sells = @income.sells
+		@fees = @income.fees
+		@fee_sells = @income.fee_sells
+		@cb = cb_count(@income)
+
+		@profit = @income.profit
 	end
 
 	def new

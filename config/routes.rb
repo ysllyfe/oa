@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     #income_costs icosts
     resources :incomes do
       get 'original',on: :member
+      post 'original'=>'incomes#original!',on: :member
     end
 
     resources :trucks,:costs,:fees,:icosts,:search,:audit,:finance,:infos

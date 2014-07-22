@@ -1,0 +1,47 @@
+<%=form_for :profit,:url=>original_project_income_url(@income.id) do |t|%>
+<h4>合计</h4>
+<div class="widget-box">
+	<div class="widget-body">
+		<div class="widget-main">
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>1，成本共计</h4>
+					<blockquote>
+						<p class="lighter line-height-125">
+<ol>
+<li>调货成本合计: <%=@cb[:dcb]%></li>
+<li>运费合计: <%=@cb[:ycb]%></li>
+<li>其它费用合计: <%=@cb[:qcb]%></li>
+</ol>
+<span class="text-primary">共计: <%=@cb[:cb]%></span>
+						</p>
+					</blockquote>
+					<h4>2，销售共计: <%=@cb[:sell]%></h4>
+					<h4>3，重量共计:</h4>
+					<blockquote>
+						<p class="lighter line-height-125">
+<ol>
+<li>进货重量: <%=@cb[:yweight]%></li>
+<li>销售重量: <%=@cb[:weight]%></li>
+</ol>
+						</p>
+					</blockquote>
+				</div>
+			</div>
+
+			<hr>
+			<h4>利润：<%=@cb[:lr]%></h4>
+			<hr />
+<%@cb.each do |f,k|%>
+<input type="hidden" name="<%=f%>" value="<%=k%>" />
+<% end %>
+			<button type="submit" class="btn btn-primary">确认以上信息，提交审核</button>
+			<hr />
+			公式：<br />
+			调货成本 + 运费 + 其它费用 = 成本<br />
+			销售情况 + 费用冲抵 = 销售共计<br />
+			销售 - 成本 = 利润<br />
+		</div>
+	</div>
+</div>
+<% end %>

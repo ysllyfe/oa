@@ -3,6 +3,7 @@ class Income < ActiveRecord::Base
 	self.table_name = "income_statements"
 	belongs_to :user
 	belongs_to :item
+	has_one :profit,:foreign_key => "income_statement_id",dependent: :destroy
 	has_many :trucks,:foreign_key => "income_statement_id",dependent: :destroy
 	has_many :costs,:foreign_key => "income_statement_id",dependent: :destroy
 	has_many :sells,:foreign_key => "income_statement_id",dependent: :destroy

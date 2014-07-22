@@ -10,7 +10,7 @@ module IncomeHelper
 	def _income_status(income)
 		#checked
 		return raw "<span class=\"label label-info arrowed\">#{t('income.status.checked')}</span>" if income.checked == true
-		if income.submit == true
+		if income.submit == true || income.submit == 1
 		#<span class="label label-success arrowed">Success</span>
 			raw "<span class=\"label label-success arrowed\">#{t('income.status.submit')}</span>"
 		else

@@ -43,9 +43,14 @@ class Project::TrucksController < Project
 	end
 	def destroy
 		@truck = Truck.find(params[:id])
+		@id = @truck.id
 		@income_id = @truck.income_statement_id
 		@truck.destroy
-		_back()
+		if(request.env['HTTP_REFERER'] == edit_project_truck_url(@id))
+			redirect_to project_trucks_url(:income=>@income_id) and return
+		else
+			_back()
+		end
 		#redirect_to project_trucks_url(:income=>@income_id) and return
 	end
 

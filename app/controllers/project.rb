@@ -1,7 +1,12 @@
 #encoding:utf-8
 class Project < Admin
+	include IncomeBase
+	before_filter :set_item_color
 	before_filter :set_steps
 	before_filter :set_submenu_and_breadcrumbs
+	def set_item_color
+		@item_colors = %W(item-orange item-orange2 item-red item-red2  item-green item-green2 item-blue item-blue2 item-blue3 item-pink item-purple item-black item-grey item-brown item-default)
+	end
 	def set_steps
 		@steps = Array.new
 		#info url step
