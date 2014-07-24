@@ -1,4 +1,7 @@
 module IncomeHelper
+	def yuan(s)
+		number_to_currency(s,:unit=>'')
+	end
 	def _delvery_user(users)
 		return '' if users.blank?
 		u = []
@@ -17,9 +20,6 @@ module IncomeHelper
 			raw "<span class=\"label label-warning arrowed\">#{t("income.status.not_submit")}</span>"
 		end
 
-	end
-	def _round(s,num=4)
-		s.to_s.to_f.round(num)
 	end
 
 	def _income_step(income_id,steps,step=1)

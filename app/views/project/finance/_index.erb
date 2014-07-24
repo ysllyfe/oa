@@ -1,0 +1,40 @@
+<div class="widget-box transparent">
+	<div class="widget-header widget-header-flat">
+		<h4 class="widget-title lighter">
+			<i class="ace-icon fa fa-star orange"></i>
+			Popular Domains
+		</h4>
+
+		<div class="widget-toolbar">
+			<a data-action="collapse" href="#">
+				<i class="ace-icon fa fa-chevron-up"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="widget-body">
+		<div class="widget-main no-padding">
+			<table class="table table-bordered table-striped">
+<%=_simple_thead(t("item.finance.search_table"))%>
+				<tbody>
+<% @items.each do |t| %>
+<tr>
+<td><%=t.id%></td>
+<td><%=t.name%><%=_item_status(t)%></td>
+<td><%=t.weight%></td>
+<td align="right">
+<%= yuan t.price%>
+</td>
+<td align="right"><%= yuan t.payments%></td>
+<td></td>
+<td align="right">
+<%= yuan _remind_payment(t)%>
+</td>
+</tr>
+<% end %>
+					
+				</tbody>
+			</table>
+		</div><!-- /.widget-main -->
+	</div><!-- /.widget-body -->
+</div><!-- /.widget-box -->

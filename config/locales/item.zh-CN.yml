@@ -1,0 +1,17 @@
+"zh-CN":
+  item:
+    finance:
+      search_table:
+        id: "编号"
+        name: "项目名称"
+        weight:
+          tname: "销售重量"
+          class: "hidden-480"
+        price:
+          tname: "销售金额"
+          class: "hidden-480"
+        payments: "已收货款"
+        out:
+          tname: "营业外收入"
+          class: "hidden-480"
+        remind: "未付款(不含营业外收入)"

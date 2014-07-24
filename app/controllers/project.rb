@@ -1,6 +1,5 @@
 #encoding:utf-8
 class Project < Admin
-	include IncomeBase
 	before_filter :set_item_color
 	before_filter :set_steps
 	before_filter :set_submenu_and_breadcrumbs

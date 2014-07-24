@@ -7,3 +7,5 @@ db/schema.rb
 db/migrate/*
 
 tmp/pids/server.pid
+public/up
+public/uploads

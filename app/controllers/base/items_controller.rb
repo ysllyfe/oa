@@ -4,7 +4,7 @@ class Base::ItemsController < Base
 		@items = Item.where(softdelete:false).order('ended asc,group_id asc,id desc')
 		@factories = Factory.where(softdelete:false).order('id desc')
 		@steeltypes = Steeltype.where(softdelete:false).order('id desc')
-		@fees = IncomeFeeType.where(softdelete:false).order('id desc')
+		@fees = FeeType.where(softdelete:false).order('id desc')
 		
 	end
 	def new

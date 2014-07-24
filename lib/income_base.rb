@@ -3,7 +3,7 @@ module IncomeBase
 	def _round(f,num=4)
 		return f.to_s.to_f.round(num)
 	end
-	def item_income_count(item)
+	def item_profit_rebuild(item)
 		#调出所有的利润表
 		profits = item.profits.where(checked: true)
 		weight = profits.inject(0.0){|mem,var| mem + _round(var.weight)}
@@ -76,6 +76,8 @@ module IncomeBase
 		_lr = _sell - _cb
 		return {:yweight=>_yweight,:cb => _cb,:dcb=>_dcb,:ycb=>_ycb,:qcb=>_qcb,:weight=>_weight,:basesell=>_basesell,:fee_sells=>_fee_sells,:sell=>_sell,:lr=>_lr}
 	end
-
+	def self.included(base)
+		base.send :helper_method,:_round
+	end
 
 end

@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   root 'home#index'
 
 
+  
+  namespace :staffs do
+    resources :bases
+  end
+  resources :staffs
 
-
+  
   namespace :base do
     resources :items,:factories,:fees,:steeltypes
   end
