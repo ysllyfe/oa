@@ -1,6 +1,6 @@
 <li class="light-blue">
 	<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-		<img class="nav-user-photo" src="/assets/avatars/user.jpg" alt="<%=@logged_in_user.username%>" />
+		<img class="nav-user-photo" src="<%=@logged_in_user.photos.url(:s)%>" alt="<%=@logged_in_user.username%>" />
 		<span class="user-info">
 			<small>欢迎回来,</small>
 			<%=@logged_in_user.username%>

@@ -1,0 +1,25 @@
+"zh-CN":
+  staff_list:
+    table:
+      id: "姓名"
+      position:
+        tname: "职位"
+        class: "hidden-480"
+      department:
+        tname: "部门"
+        class: "hidden-480"
+      level:
+        tname: "级别"
+        class: "hidden-480"
+      in_year:
+        tname: "入职"
+        class: "hidden-480"
+      in_job:
+        tname: "入职时间"
+        class: "hidden-480"
+      contract: "合同"
+      contract_end:
+        tname: "合同到期"
+        class: "hidden-480"
+      sb: "社保"
+      operation: "操作"

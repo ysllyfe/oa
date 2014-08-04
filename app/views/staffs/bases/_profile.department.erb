@@ -1,0 +1,41 @@
+<div class="widget-header widget-header-small">
+<h4 class="widget-title blue smaller">
+	<i class="ace-icon fa fa-rss orange"></i>
+	部门信息
+</h4>
+<div class="widget-toolbar action-buttons">
+	<a href="#" class="ajax_iframe">
+		<i class="ace-icon fa fa-pencil-square-o blue"></i>
+	</a>
+</div>
+</div>
+<table class="table table-striped table-hover">
+<thead>
+	<tr>
+		<th>组别</th>
+		<th>所在部门</th>
+		<th>职位</th>
+		<th class="hidden-480">级别</th>
+		<th>
+			开始时间
+		</th>
+		<th class="hidden-480">结束时间</th>
+		<th>版本</th>
+		<th>操作</th>
+	</tr>
+</thead>
+<tbody>
+<%@departments.each do |depart|%>
+	<tr>
+	<td><%=depart.group.name%></td>
+	<td><%=depart.group_department.name%></td>
+	<td><%=depart.post%></td>
+	<td><%=depart.level%></td>
+	<td><%=depart.start_at%></td>
+	<td><%=depart.end_at%></td>
+	<td><%=_version depart.ischecked%></td>
+	<td><%=_depart_operate depart.ischecked,'delete'=>staffs_ajax_departments_url(:id=>depart.id)%></td>
+	</tr>
+<% end %>
+</tbody>
+</table>

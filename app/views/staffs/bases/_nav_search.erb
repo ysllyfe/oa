@@ -1,0 +1,8 @@
+<div class="nav-search" id="nav-search">
+<%=form_for :user,:url=>staffs_ajax_search_url do |f|%>
+		<span class="input-icon">
+			<input type="text" placeholder="输入姓名直达 ..." class="nav-search-input" id="nav-search-input" name="username" autocomplete="off" />
+			<i class="ace-icon fa fa-search nav-search-icon"></i>
+		</span>
+<% end %>
+</div>

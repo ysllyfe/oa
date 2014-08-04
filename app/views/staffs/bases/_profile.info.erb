@@ -1,0 +1,96 @@
+<div class="widget-header widget-header-small">
+<h4 class="widget-title blue smaller">
+	<i class="ace-icon fa fa-rss orange"></i>
+	员工详细信息
+</h4>
+<div class="widget-toolbar action-buttons">
+	<a href="#" class="ajax_iframe">
+		<i class="ace-icon fa fa-pencil-square-o blue"></i>
+	</a>
+</div>
+</div>
+
+	<div class="widget-body">
+		<div class="widget-main no-padding">
+			<!-- #section:pages/profile.feed -->
+			<div class="profile-user-info profile-user-info-striped">
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 婚否 </div>
+
+					<div class="profile-info-value">
+						<span id="username"><%=_true_or_false @user.info.marriage%></span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 生日 </div>
+
+					<div class="profile-info-value">
+						<%=_birth @user%>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 手机 </div>
+
+					<div class="profile-info-value">
+						<%=@user.info.phone%>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 电话 </div>
+
+					<div class="profile-info-value">
+						<%=@user.info.tel%>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 住址 </div>
+
+					<div class="profile-info-value">
+						<%=@user.info.address%>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 入职时间 </div>
+
+					<div class="profile-info-value">
+						<%=@user.info.entry_at%>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 转正时间 </div>
+
+					<div class="profile-info-value">
+						<%=@user.info.positive_at%>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 离职时间 </div>
+
+					<div class="profile-info-value">
+						<%=@user.info.departure_at%>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 劳动合同 </div>
+
+					<div class="profile-info-value">
+						<%=_true_or_false @user.info.labor%>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name"> 社保 </div>
+
+					<div class="profile-info-value">
+						<%=_true_or_false @user.info.security%>
+					</div>
+				</div>
+			</div>
+
+			<!-- /section:pages/profile.feed -->
+		</div>
+	</div>

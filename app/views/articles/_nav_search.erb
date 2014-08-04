@@ -1,0 +1,8 @@
+<div class="nav-search" id="nav-search">
+<%=form_for :article,:url=>search_articles_url do |f|%>
+		<span class="input-icon">
+			<input type="text" placeholder="输入标题直达 ..." class="nav-search-input" id="nav-search-input" name="title" autocomplete="off" />
+			<i class="ace-icon fa fa-search nav-search-icon"></i>
+		</span>
+<% end %>
+</div>

@@ -1,0 +1,12 @@
+<table class="table table-striped table-hover">
+<%=_simple_thead(t("staff_list.table"))%>
+<tbody>
+<% @user[:notry].each do |t|%>
+<%=render :partial=>'piece',:locals=>{:t=>t}%>
+<% end %>
+<tr class=""><td>--------</td></tr>
+<% @user[:try].each do |t|%>
+<%=render :partial=>'piece',:locals=>{:t=>t}%>
+<% end %>
+</tbody>
+</table>

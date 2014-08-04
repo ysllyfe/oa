@@ -1,5 +1,5 @@
 #encoding:utf-8
-class Staff < Admin
+class Staffbox < Admin
 	before_filter :set_submenu_and_breadcrumbs
 	def set_controller_sidebar
 		@sidebar = t("sidebar.menu.staff")

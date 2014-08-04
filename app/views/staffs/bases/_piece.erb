@@ -1,0 +1,62 @@
+<tr>
+	<td><img src="<%=t.photos.url(:s)%>" class="profile" /><%=t.username%></td>
+	<td class="hidden-480"><%=t.department.post%></td>
+	<td class="hidden-480"><%=t.department.department%></td>
+	<td class="hidden-480"><%=t.department.level%></td>
+	<td class="hidden-480"><%=t.department.level%></td>
+	<td class="hidden-480"><%=t.info.entry_at%></td>
+	<td><%= _true_or_false t.info.labor %></td>
+	<td class="hidden-480"><%= (t.info.lab_end) %></td>
+	<td><%= _true_or_false t.info.security %></td>
+	<td>
+		
+<div class="inline position-relative">
+<button data-position="auto" data-toggle="dropdown" class="btn btn-minier dropdown-toggle">
+	<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+</button>
+
+<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+	<li>
+		<a title="" data-rel="tooltip" class="tooltip-info" href="<%=staff_url(t)%>" data-original-title="View">
+			<span>
+				<i class="ace-icon fa fa-search bigger-120"></i>查看
+			</span>
+		</a>
+	</li>
+	<li>
+		<a title="" data-rel="tooltip" class="tooltip-info" href="#" data-original-title="View">
+			<span class="blue">
+				<i class="ace-icon fa fa-cny bigger-120"></i>调薪金
+			</span>
+		</a>
+	</li>
+
+	<li>
+		<a title="" data-rel="tooltip" class="tooltip-success" href="<%=staffs_basis_url(t)%>" data-original-title="Edit">
+			<span class="green">
+				<i class="ace-icon fa fa-edit bigger-120"></i>改资料
+			</span>
+		</a>
+	</li>
+
+	<li>
+		<a title="" data-rel="tooltip" class="tooltip-success" href="#" data-original-title="Edit">
+			<span class="">
+				<i class="ace-icon fa fa-image bigger-120"></i>改头像
+			</span>
+		</a>
+	</li>
+
+
+	<li>
+		<a title="" data-rel="tooltip" class="tooltip-error" href="#" data-original-title="Delete">
+			<span class="red">
+				<i class="ace-icon fa fa-user bigger-120"></i>基础资料
+			</span>
+		</a>
+	</li>
+</ul>
+</div>
+
+	</td>
+</tr>

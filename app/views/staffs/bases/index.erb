@@ -1,0 +1,19 @@
+<div class="page-header">
+	<h1>
+		员工档案
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			在职员工档案
+		</small>
+	</h1>
+</div>
+
+
+<div class="row">
+<div class="col-xs-12">
+<%@users.each_with_index do |user,index|%>
+<h3 class="header smaller lighter blue"><%=@group[index][:name]%></h3>
+<%=render :partial=>'staff_list',:locals=>{:@user=>user}%>
+<% end %>
+</div>
+</div>

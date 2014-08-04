@@ -5,17 +5,31 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-
+  #公司制度
+  resources :articles do
+    post 'search',on: :collection
+  end
   
+  resources :notices
+
+  #员工档案
   namespace :staffs do
     resources :bases
+    #通用用户姓名直达
+    post 'ajax/search' => 'ajax#search'
+
+    get 'ajax/departments' => 'ajax#departments'
+    post 'ajax/departments' => 'ajax#departments_create'
+    delete 'ajax/departments' => 'ajax#departments_delete'
   end
   resources :staffs
 
-  
+  #基础信息
   namespace :base do
     resources :items,:factories,:fees,:steeltypes
   end
+
+  #工程管理
   namespace :project do
     #income_costs icosts
     resources :incomes do
@@ -39,52 +53,10 @@ Rails.application.routes.draw do
   get 'session/forgetpasswd'
   post 'session/resetpasswd'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  get 'ueditor/image' => 'ueditor#showimage'
+  post 'ueditor/imageUp' => 'ueditor#imageUp'
+  post 'ueditor/imageManager' => 'ueditor#imageManager'
+  post 'ueditor/getRemoteImage' => 'ueditor#getRemoteImage'
+  post 'ueditor/fileUp' => 'ueditor#fileUp'
+  post 'ueditor/getMovie' => 'ueditor#getMovie'
 end

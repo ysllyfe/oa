@@ -1,0 +1,39 @@
+<div class="widget-header widget-header-small">
+<h4 class="widget-title blue smaller">
+	<i class="ace-icon fa fa-rss orange"></i>
+	教育信息
+</h4>
+<div class="widget-toolbar action-buttons">
+	<a href="#" class="ajax_iframe">
+		<i class="ace-icon fa fa-pencil-square-o blue"></i>
+	</a>
+</div>
+</div>
+<table class="table table-striped table-hover">
+<thead>
+	<tr>
+		<th>所在学校</th>
+		<th>学历</th>
+		<th class="hidden-480">专业</th>
+		<th>
+			开始时间
+		</th>
+		<th class="hidden-480">结束时间</th>
+		<th>版本</th>
+		<th>操作</th>
+	</tr>
+</thead>
+<tbody>
+<% @educations.each do |edu|%>
+<tr>
+<td><%=edu.school%></td>
+<td><%=edu.degree%></td>
+<td><%=edu.specialty%></td>
+<td><%=edu.start_at%></td>
+<td><%=edu.end_at%></td>
+<td><%=_version edu.ischecked%></td>
+<td><%=%></td>
+</tr>
+<% end %>
+</tbody>
+</table>

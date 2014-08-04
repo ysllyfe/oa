@@ -1,0 +1,49 @@
+<div class="profile-user-info profile-user-info-striped">
+	<div class="profile-info-row">
+		<div class="profile-info-name"> 姓名 </div>
+
+		<div class="profile-info-value">
+			<span id="username"><%=@user.username%></span>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> 身份证 </div>
+
+		<div class="profile-info-value">
+			<%=@user.baseinfo.card%>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> 生日 </div>
+
+		<div class="profile-info-value">
+			<%=@user.baseinfo.birth%>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> 性别 </div>
+
+		<div class="profile-info-value">
+			<%=@user.baseinfo.sex%>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> 民族 </div>
+
+		<div class="profile-info-value">
+			<%=@user.baseinfo.ethnic%>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> 政治面貌 </div>
+
+		<div class="profile-info-value">
+			<%=@user.baseinfo.political%>
+		</div>
+	</div>
+</div>

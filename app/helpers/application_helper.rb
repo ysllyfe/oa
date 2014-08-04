@@ -1,4 +1,22 @@
 module ApplicationHelper
+	def _true_or_false(t)
+		if t
+			raw '<span style="color: green">是</span>'
+		else
+			raw '<span style="color: red">否</span>'
+		end
+	end
+	def _version(t)
+		#bool t
+		if t
+			raw '<span style="color: green">正式版</span>'
+		else
+			raw '<span style="color: red">草稿</span>'
+		end
+	end
+	def _round(f,num=4)
+		return f.to_s.to_f.round(num)
+	end
 	def _sidebar_active(name,open=nil)
 		if t("sidebar.#{name}") == @sidebar
 			open ? 'active open' : 'active' 

@@ -1,0 +1,50 @@
+<div class="widget-header widget-header-small">
+<h4 class="widget-title blue smaller">
+	<i class="ace-icon fa fa-rss orange"></i>
+	个人附件
+</h4>
+<div class="widget-toolbar action-buttons">
+	<a href="#" class="ajax_iframe">
+		<i class="ace-icon fa fa-pencil-square-o blue"></i>
+	</a>
+</div>
+</div>
+
+
+<ul class="ace-thumbnails clearfix">
+<% @attachments.each do |att|%>
+<li>
+	<a data-rel="colorbox" href="<%=att.photo.url%>" class="cboxElement">
+		<img src="<%=att.photo.url(:m)%>" alt="150x150">
+		<div class="tags">
+			<!-- #section:pages/gallery.tags -->
+			<span class="label-holder">
+				<span class="label label-info arrowed"><%=att.kind%></span>
+			</span>
+			<!-- /section:pages/gallery.tags -->
+		</div>
+		<div class="text">
+			<div class="inner">点击查看大图</div>
+		</div>
+	</a>
+
+	<div class="tools tools-bottom">
+		<a href="#">
+			<i class="ace-icon fa fa-link"></i>
+		</a>
+
+		<a href="#">
+			<i class="ace-icon fa fa-paperclip"></i>
+		</a>
+
+		<a href="#">
+			<i class="ace-icon fa fa-pencil"></i>
+		</a>
+
+		<a href="#">
+			<i class="ace-icon fa fa-times red"></i>
+		</a>
+	</div>
+</li>
+<% end %>
+</ul>

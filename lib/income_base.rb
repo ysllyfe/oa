@@ -76,8 +76,6 @@ module IncomeBase
 		_lr = _sell - _cb
 		return {:yweight=>_yweight,:cb => _cb,:dcb=>_dcb,:ycb=>_ycb,:qcb=>_qcb,:weight=>_weight,:basesell=>_basesell,:fee_sells=>_fee_sells,:sell=>_sell,:lr=>_lr}
 	end
-	def self.included(base)
-		base.send :helper_method,:_round
-	end
+
 
 end

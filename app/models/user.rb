@@ -18,8 +18,29 @@ class User < ActiveRecord::Base
 
 	has_many :incomes
 
-
+	has_many :infos,dependent: :destroy
+	has_one :staff,dependent: :destroy
+	has_many :departments,dependent: :destroy
+	has_many :educations,dependent: :destroy
+	has_many :families,dependent: :destroy
+	has_many :contacts,dependent: :destroy
 	before_save :encrypt_password
+
+	def attachments
+		Photo.where(user_id: self.id).order('id asc')
+	end
+
+	def department
+		self.departments.where(ischecked:true).order('id desc').first || Department.new
+	end
+
+	def info
+		self.infos.where(ischecked:true).order('id desc').first || Info.new
+	end
+	
+	def baseinfo
+		self.staff || Staff.new
+	end
 
 	def password_required?
 		self.hashed_password.blank? || !self.password.blank?

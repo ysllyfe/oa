@@ -1,0 +1,30 @@
+<div class="page-header">
+	<h1>
+		通知
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			全部通知
+		</small>
+	</h1>
+</div>
+<table class="table table-striped table-hover" id="sample-table-1">
+<thead>
+	<tr>
+		<th>通知事项</th>
+		<th class="hidden-480">发布人</th>
+		<th class="hidden-480"><i class="ace-icon fa fa-clock-o bigger-110"></i>发布时间</th>
+		<th>操作</th>
+	</tr>
+</thead>
+<tbody>
+<%@notices.each do |notice|%>
+<tr>
+	<td><i class="fa fa-file-text-o "></i> <a href="<%=notice_url(notice.id)%>"><%=notice.title%></a></td>
+	<td class="hidden-480"><%=notice.username%></td>
+	<td class="hidden-480"><%=notice.created_at.to_s(:detail)%></td>
+	<td>
+	<a href="<%=edit_notice_url(notice.id)%>">修改</a> | 删除</td>
+</tr>
+<% end %>
+</tbody>
+</table>
