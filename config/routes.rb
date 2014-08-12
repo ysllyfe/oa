@@ -10,17 +10,22 @@ Rails.application.routes.draw do
     post 'search',on: :collection
   end
   
-  resources :notices
+  resources :notices do 
+    put 'check',on: :member
+  end
 
   #员工档案
   namespace :staffs do
     resources :bases
     #通用用户姓名直达
     post 'ajax/search' => 'ajax#search'
-
-    get 'ajax/departments' => 'ajax#departments'
-    post 'ajax/departments' => 'ajax#departments_create'
-    delete 'ajax/departments' => 'ajax#departments_delete'
+    #基础信息，个人信息，部门信息，教育，家庭成员，紧急联系人
+    ['base','info','departments','edu','member','contact'].each do |t|
+      get "ajax/#{t}" => "ajax##{t}"
+      post "ajax/#{t}" => "ajax##{t}_create"
+      delete "ajax/#{t}" => "ajax##{t}_delete"
+      put "ajax/#{t}" => "ajax##{t}_audit"
+    end    
   end
   resources :staffs
 
@@ -40,7 +45,19 @@ Rails.application.routes.draw do
     resources :trucks,:costs,:fees,:icosts,:search,:audit,:finance,:infos
   end
 
+  #超级管理(用户，角色，角色组)
+  resources :accounts do
+    post 'search',on: :collection
+    get 'rolegroups',on: :member
+  end
+  resources :roles
+  resources :rolegroups do
+    get 'role_ajax_change',on: :member
+    get 'user_ajax_change',on: :member
+    get 'users',on: :member
+  end
 
+  get 'deny' => 'home#role_deny'
 
   get 'session/login'
   post 'session/login' => 'session#login!'
@@ -48,7 +65,6 @@ Rails.application.routes.draw do
   get 'session/timeout'
   post 'session/timeout' => 'session#timeout!'
 
-  get 'session/deny'
   get 'session/logout'
   get 'session/forgetpasswd'
   post 'session/resetpasswd'

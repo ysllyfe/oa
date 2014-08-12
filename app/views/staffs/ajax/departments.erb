@@ -1,0 +1,100 @@
+<div class="widget-box">
+	<div class="widget-header">
+		<h5 class="widget-title">基础信息</h5>
+	</div>
+
+	<div class="widget-body">
+		<div class="widget-main">
+<%=form_for @depart,:url=>staffs_ajax_departments_url(:id=>@user.id),:method=>'post',:remote=>'true' do |f|%>
+<div>
+<ul class="nav nav-pills" style="padding-left:20px">
+<% @groups.each do |g| %>
+<li class="dropdown">
+<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+	<%=g.name%>
+</a>
+<ul class="dropdown-menu dropdown-close">
+<% g.group_departments.each do |d| %>
+	<li>
+		<a href="javascript:;" class="choose_department" data-group-name="<%=g.name%>"><%=d.name%></a>
+	</li>
+<% end %>
+</ul>
+</li>
+<% end %>
+</ul>
+</div>
+<div>
+<label>
+部门：
+</label>
+<%=f.text_field :group_name,:class=>'input-small',:readonly=>true%>
+<%=f.text_field :department,:class=>'input-small',:readonly=>true%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+职位：
+</label>
+<%=f.text_field :post,:class=>'input-small'%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+级别：
+</label>
+<%=f.select :level,LEVEL,{:include_blank=>true},:data=>{},:class=>'input-small'%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>开始：</label>
+<%=f.text_field :start_at,'data-date-format'=>'yyyy-mm-dd',:class=>'input-small date-picker'%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>结束：</label>
+<%=f.text_field :end_at,'data-date-format'=>'yyyy-mm-dd',:class=>'input-small date-picker'%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>备注：</label>
+<%=f.text_area :info,:class=>'form-control' %>
+</div>
+<div class="clearfix form-actions">
+	<div class="">
+		<button type="submit" class="btn btn-info btn-block">
+			<i class="ace-icon fa fa-check bigger-110"></i>
+			<%=t("submit")%>
+		</button>
+
+	</div>
+</div>
+
+<% end %>
+
+
+
+		</div>
+	</div>
+</div>
+
+
+<script src="/assets/js/date-time/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+$('.choose_department').each(function(){
+	$(this).bind('click',function(){
+		$('#department_group_name').val($(this).attr('data-group-name'));
+		$('#department_department').val($(this).text());
+		console.log($(this).text());
+		console.log($(this).attr('data-group-name'));
+	})
+})
+$('.date-picker').datepicker({
+	autoclose: true,
+	todayHighlight: true
+})
+//show datepicker when clicking on the icon
+.next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+</script>

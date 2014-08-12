@@ -21,7 +21,9 @@ class Staffs::BasesController < Staffbox
 
 	def show
 		@user = User.find(params[:id])
-		@departments = @user.departments.where(ischecked:true).order('id asc')
+		@infos = @user.infos
+		#@departments = @user.departments.where(ischecked:true).order('id asc')
+		@departments = @user.departments.all.order('id asc')
 		@educations = @user.educations.all.order('id asc')
 		@families = @user.families.all.order('id asc')
 		@contacts = @user.contacts.all.order('id asc')
@@ -35,6 +37,13 @@ class Staffs::BasesController < Staffbox
 		@breadcrumbs << [t("sidebar.staff.injob"),staffs_bases_url]
 	end
 
+	def controller_role
+		if @logged_in_user.has_role?('like staff_')
+		else
+			flash[:error] = "你没有对应的权限访问这个页面，对应的用户权限为`like staff_`"
+			redirect_to deny_url and return
+		end
+	end
 
 	def searchbox
 		@searchbox_data = User.where(injob:true).order('id ASC')

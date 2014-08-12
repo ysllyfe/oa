@@ -7,11 +7,20 @@
 		</small>
 	</h1>
 </div>
+<% if @logged_in_user.has_role?('like notice_') %>
+<a href="<%=new_notice_url%>" class="btn btn-primary"><i class="ace-icon fa fa-pencil align-top bigger-125"></i>添加新通知</a>
+|
+<% if @logged_in_user.has_role?('notice_check') %>
+<a class="btn btn-warning" href="<%=notices_url(:checked=>true)%>"><i class=""></i>未审核通知</a>
+<% end %>
+<hr />
+<% end %>
 <table class="table table-striped table-hover" id="sample-table-1">
 <thead>
 	<tr>
 		<th>通知事项</th>
 		<th class="hidden-480">发布人</th>
+		<th class="hidden-480">分发</th>
 		<th class="hidden-480"><i class="ace-icon fa fa-clock-o bigger-110"></i>发布时间</th>
 		<th>操作</th>
 	</tr>
@@ -21,10 +30,14 @@
 <tr>
 	<td><i class="fa fa-file-text-o "></i> <a href="<%=notice_url(notice.id)%>"><%=notice.title%></a></td>
 	<td class="hidden-480"><%=notice.username%></td>
+	<td class="hidden-480"><%=notice.group_name%></td>
 	<td class="hidden-480"><%=notice.created_at.to_s(:detail)%></td>
 	<td>
-	<a href="<%=edit_notice_url(notice.id)%>">修改</a> | 删除</td>
+	<%=_check_view(notice.id,notice.checked,check_notice_url(notice.id),'notice_check')%>
+	<a href="<%=edit_notice_url(notice.id)%>">修改</a> | 
+	<a href="<%=notice_url(notice.id)%>" data-method="delete" data-confirm="确认删除？" rel="nofollow">删除</a></td>
 </tr>
 <% end %>
 </tbody>
 </table>
+<%= paginate @notices %>

@@ -1,0 +1,39 @@
+<% if !flash[:error].blank? %>
+<div class="alert alert-danger">
+<button data-dismiss="alert" class="close" type="button">
+	<i class="ace-icon fa fa-times"></i>
+</button>
+<strong>
+	<i class="ace-icon fa fa-chain-broken"></i>
+	出错啦！
+</strong>
+<%=flash[:error]%>
+<br>
+</div>
+<% end %>
+<% if !flash[:warning].blank? %>
+<div class="alert alert-warning">
+<button data-dismiss="alert" class="close" type="button">
+	<i class="ace-icon fa fa-times"></i>
+</button>
+<strong>
+	<i class="ace-icon fa fa-exclamation-circle"></i>
+	警告！
+</strong>
+<%=flash[:warning]%>
+<br>
+</div>
+<% end %>
+<% if !flash[:notice].blank? %>
+<div class="alert alert-info">
+<button data-dismiss="alert" class="close" type="button">
+	<i class="ace-icon fa fa-times"></i>
+</button>
+<strong>
+	<i class="ace-icon fa fa-lemon-o"></i>
+	提示！
+</strong>
+<%=flash[:notice]%>
+<br>
+</div>
+<% end %>

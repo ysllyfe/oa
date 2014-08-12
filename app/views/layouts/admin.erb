@@ -88,6 +88,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
+<%=render 'flash'%>
 <%=yield%>
 							<!-- PAGE CONTENT ENDS -->
 						</div><!-- /.col -->
@@ -110,7 +111,7 @@
 		<script src="/js/application.js"></script>
 	</body>
 </html>
-<%=render 'm'%>
+<%=render 'm.erb'%>
 <script type="text/javascript">
 <%=render 'm.js'%>
 </script>

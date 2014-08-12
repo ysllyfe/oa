@@ -14,18 +14,18 @@ class User < ActiveRecord::Base
 	mount_uploader :avatar, AvatarUploader
 	#photos是公司給個人的頭像，個人無法修改
 	mount_uploader :photos, AvatarUploader
-
-
+	
 	has_many :incomes
-
 	has_many :infos,dependent: :destroy
 	has_one :staff,dependent: :destroy
 	has_many :departments,dependent: :destroy
 	has_many :educations,dependent: :destroy
 	has_many :families,dependent: :destroy
 	has_many :contacts,dependent: :destroy
+	has_and_belongs_to_many :rolegroups,:association_foreign_key=>'rolepart_id'
+	has_and_belongs_to_many :roles
 	before_save :encrypt_password
-
+	belongs_to :group
 	def attachments
 		Photo.where(user_id: self.id).order('id asc')
 	end
@@ -64,19 +64,36 @@ class User < ActiveRecord::Base
 		return Digest::SHA256.hexdigest(string)
 	end
   
+  def reloadroles
+  	self.roles.delete_all
+  	groups = self.rolegroups
+  	groups.each do |t|
+  		if t.roles
+  			t.roles.each do |role|
+  				self.roles << role
+  			end
+  		end
+  	end
+  end
+
 	def has_role?(rolename)
+		if self.roles.find_by(name: 'administrator')
+			#超级管理员，直接返回真
+			return true
+		end
 		if(rolename.class == String)
+			# like income_query
 			if(rolename.split(' ').first == 'like')
 				likename = rolename.split(' ').last
 				roles = Role.where('name like "%' + likename + '%"' )
 				return self.has_role? roles.collect{|f| f.name}
 			end
-			return self.roles.find_by_name(rolename) ? true : false
+			return self.roles.find_by(name: rolename) ? true : false
 		end
 		if(rolename.class == Array)
 			t = false
 			rolename.each do |f|
-				t = self.roles.find_by_name(f) ? true : false
+				t = self.roles.find_by(name: f) ? true : false
 				if(t == true)
 					return true
 				end

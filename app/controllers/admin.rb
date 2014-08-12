@@ -3,7 +3,7 @@ class Admin < ApplicationController
 	before_filter :login_required
 	before_filter :set_sidebar_breadcrumbs
 	before_filter :set_controller_sidebar
-
+	before_filter :controller_role
 	#rescue_from ActionView::MissingTemplate,:with => :tmp_tpl
 	def _back(msg=nil)
 		flash[:notice] = msg
@@ -19,7 +19,6 @@ class Admin < ApplicationController
 		@sidebar = t("setting.home")
 		@submenu = t("setting.home")
 	end
-
 	def tmp_tpl
 		render :text=>'MissingTemplate' and return
 	end

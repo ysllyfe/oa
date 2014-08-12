@@ -1,0 +1,36 @@
+<%=form_for @notice,:html=>{:class=>"form-horizontal"} do |f|%>
+<div class="form-group">
+	<label for="form-field-1" class="col-sm-2 control-label no-padding-right"> 通知标题 </label>
+
+	<div class="col-sm-10">
+		<%=f.text_field :title,:class=>'col-xs-10 col-sm-5',:placeholder=>'通知的相关小标题'%>
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="form-field-1-1" class="col-sm-2 control-label no-padding-right"> 文件分发 </label>
+
+	<div class="col-sm-10">
+	<%=f.select :group_id,@groups.collect{|t| [t.name,t.id]},{:include_blank=>true},{:class=>'chosen-select',:multiple=>'',:placeholder=>'请选择文件下发公司',:style=>'width:90%'}%>
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="form-field-1-1" class="col-sm-2 control-label no-padding-right"> 文件内容 </label>
+
+	<div class="col-sm-10">
+		<script id="editor" type="text/plain"><%=raw @notice.info%></script>
+	</div>
+</div>
+
+
+
+<div class="clearfix form-actions">
+	<div class="col-md-offset-3 col-md-9">
+		<button type="submit" class="btn btn-info">
+			<i class="ace-icon fa fa-check bigger-110"></i>
+			提交
+		</button>
+	</div>
+</div>
+<% end %>

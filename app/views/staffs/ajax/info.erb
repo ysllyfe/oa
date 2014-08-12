@@ -1,0 +1,124 @@
+<div class="widget-box">
+	<div class="widget-header">
+		<h5 class="widget-title">员工详细信息</h5>
+	</div>
+
+	<div class="widget-body">
+		<div class="widget-main">
+<%=form_for @info,:url=>staffs_ajax_info_url(:id=>@user.id),:method=>'post',:remote=>'true' do |f|%>
+<div>
+<label>
+婚否：
+</label>
+<%=f.check_box :marriage,:class=>'ace ace-switch ace-switch-5'%>
+<span class="lbl"></span>
+</div>
+<div>
+<label>
+生日：
+</label>
+<%=_birth_form(@info)%>
+</div>
+<div>
+<label>
+手机：
+</label>
+<%=f.text_field :phone,:class=>'form-control'%>
+</div>
+<div>
+<label>
+电话：
+</label>
+<%=f.text_field :tel,:class=>'form-control'%>
+</div>
+<div>
+<label>
+住址：
+</label>
+<%=f.text_field :address,:class=>'form-control'%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+入职时间：
+</label>
+<%=f.text_field :entry_at,:class=>'input-small date-picker',"data-date-format"=>"yyyy-mm-dd"%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+转正时间：
+</label>
+<%=f.text_field :positive_at,:class=>'input-small date-picker',"data-date-format"=>"yyyy-mm-dd"%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+离职时间：
+</label>
+<%=f.text_field :departure_at,:class=>'input-small date-picker',"data-date-format"=>"yyyy-mm-dd"%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+劳动合同：
+</label>
+<%=_labor_form(@info)%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+是否购买社保：
+</label>
+<%=_security_form(@info)%>
+<span class="lbl"></span>
+</div>
+<div class="clearfix form-actions">
+	<div class="">
+		<button type="submit" class="btn btn-info btn-block">
+			<i class="ace-icon fa fa-check bigger-110"></i>
+			<%=t("submit")%>
+		</button>
+
+	</div>
+</div>
+<% end %>
+		</div>
+	</div>
+</div>
+<script src="/assets/js/date-time/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+$('.date-picker').datepicker({
+	autoclose: true,
+	todayHighlight: true
+})
+//show datepicker when clicking on the icon
+.next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+$('.switch-labor').each(function(index,obj){
+	$(obj).bind('click',function(){
+		if(index == 0){
+			$('.switch-labor-box').hide();
+		}else{
+			$('.switch-labor-box').show();
+		}
+	});
+});
+$('.switch-security').each(function(index,obj){
+	$(obj).bind('click',function(){
+		if(index == 0){
+			$('.switch-security-box').hide();
+		}else{
+			$('.switch-security-box').show();
+		}
+	});
+});
+$('.switch-birth').each(function(index,obj){
+	$(obj).bind('click',function(){
+		$('.switch-birth-box').hide();
+		$('.switch-birth-box').eq(index).show();
+	})
+});
+
+</script>

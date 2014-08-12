@@ -1,15 +1,15 @@
 source 'http://ruby.taobao.org'
 
 gem 'thin'
-gem 'kaminari'
-gem 'rmagick'
-gem 'mini_magick'
-gem 'jquery-rails'
-gem 'carrierwave'
+gem 'kaminari', '0.16.1'
+gem 'rmagick', '2.13.2'
+gem 'mini_magick', '3.8.0'
+gem 'jquery-rails', '3.1.1'
+gem 'carrierwave', '0.10.0'
 gem 'rails', '4.1.4'
-gem 'mysql2'
+gem 'mysql2', '0.3.16'
 
-gem 'redis'
+gem 'redis', '3.1.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

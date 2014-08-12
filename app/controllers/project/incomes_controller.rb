@@ -1,5 +1,12 @@
 #encoding:utf-8
 class Project::IncomesController < Project
+	def controller_role
+		if @logged_in_user.has_role?('income_edit')
+		else
+			flash[:error] = "你没有对应的权限访问这个页面，对应的用户权限为`income_edit`"
+			redirect_to deny_url and return
+		end
+	end
 	def index
 		@incomes = @logged_in_user.incomes.where(checked:false).order('id desc')
 	end

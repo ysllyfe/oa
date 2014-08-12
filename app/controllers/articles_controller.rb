@@ -1,6 +1,8 @@
 #encoding:utf-8
 class ArticlesController < Admin
 	before_filter :searchbox
+	def controller_role
+	end
 	def index
 		@articles = Article.all.order('')
 	end

@@ -5,6 +5,12 @@
 		<i class="ace-icon fa fa-angle-double-right"></i>
 		<%=@user.username%>
 	</small>
+	<div class="pull-right">
+	<a class="btn btn-white btn-warning btn-bold 1" href="###" onclick="toggle_box(this)">
+		<i class="ace-icon fa fa-chevron-up bigger-120 orange"></i>
+		收起
+	</a>
+	</div>
 </h1>
 </div>
 
@@ -16,3 +22,25 @@
 </div>
 
 <script src="/assets/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript">
+function toggle_box(box){
+	if($(box).find('i:eq(0)').hasClass('fa-chevron-up')){
+		$(box).find('i:eq(0)').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+	}else{
+		$(box).find('i:eq(0)').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+	};
+	$('.widget-box').each(function(index,level_1){
+		$(level_1).toggleClass('collapsed');
+		$(level_1).find('.widget-toolbar a[data-action="collapse"]').each(function(i,obj){
+			if($(level_1).hasClass('collapsed')){
+				$(obj).find('i:eq(0)').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+			}else{
+				$(obj).find('i:eq(0)').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+				console.log('fa-chevron-down');
+			};
+		});
+
+	});
+}
+
+</script>

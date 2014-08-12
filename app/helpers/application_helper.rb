@@ -6,6 +6,13 @@ module ApplicationHelper
 			raw '<span style="color: red">否</span>'
 		end
 	end
+	def _locked?(t,url="javascript:;",method='')
+		if t
+			raw '<a href="'+url+'" data-method="'+method+'" rel="nofollow"><i class="ace-icon fa fa-unlock green"></i></a>'
+		else
+			raw '<a href="'+url+'" data-method="'+method+'" rel="nofollow"><i class="ace-icon fa fa-lock orange"></i></a>'
+		end
+	end
 	def _version(t)
 		#bool t
 		if t

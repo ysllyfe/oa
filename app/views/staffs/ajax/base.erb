@@ -1,0 +1,70 @@
+<div class="widget-box">
+	<div class="widget-header">
+		<h5 class="widget-title">基础信息</h5>
+	</div>
+
+	<div class="widget-body">
+		<div class="widget-main">
+<%=form_for @base,:url=>staffs_ajax_base_url(:id=>@user.id),:method=>'post',:remote=>'true' do |f|%>
+<div>
+<label>
+性别：
+</label>
+<%=f.select :sex,['男','女'],{:include_blank=>true},:data=>{},:class=>'form-control'%>
+</div>
+<div>
+<label>
+身份证：
+</label>
+<%=f.text_field :card,:class=>"form-control",:onfocus=>"getBirth()"%>
+</div>
+<div>
+<label>
+出生日期：
+</label>
+<%=f.text_field :birth,:class=>"form-control",:readonly=>'true'%>
+</div>
+<div>
+<label>
+民族：
+</label>
+<%=f.text_field :ethnic,:class=>"form-control"%>
+</div>
+<div>
+<label>
+政治面貌：
+</label>
+<%=f.select :political,['群众','中共党员'],{:include_blank=>true},:data=>{},:class=>'form-control'%>
+</div>
+<div class="clearfix form-actions">
+	<div class="">
+		<button type="submit" class="btn btn-info btn-block">
+			<i class="ace-icon fa fa-check bigger-110"></i>
+			<%=t("submit")%>
+		</button>
+
+	</div>
+</div>
+
+<% end %>
+
+
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function getBirth(){
+    var card = $("#staff_card").val();
+    if(card.length>13){
+        var year = card.substring(6,10);
+        var month = card.substring(10,12);
+        var day = card.substring(12,14);
+        $("#staff_birth").val(year+'-'+month+'-'+day);
+    }else if(card.length<7){
+        $("#staff_birth").val(' ');
+    }
+    setTimeout(getBirth,100);
+}
+</script>

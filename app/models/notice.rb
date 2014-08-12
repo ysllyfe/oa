@@ -26,4 +26,16 @@ class Notice < ActiveRecord::Base
 			''
 		end
 	end
+	def group_name
+		self.groups.collect{|g| g.name}.join(" ") if self.groups
+	end
+	def set_group(group_id)
+		self.groups.delete_all
+		group_id.each do |g|
+			if !g.blank?
+				group = Group.find(g)
+				self.groups << group
+			end
+		end
+	end
 end

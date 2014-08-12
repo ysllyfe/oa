@@ -1,3 +1,19 @@
+<div class="widget-header widget-header-small">
+<h4 class="widget-title  smaller">
+	<i class="ace-icon fa fa-rss orange"></i>
+	基础资料
+</h4>
+<div class="widget-toolbar">
+	<a data-action="collapse" href="#">
+		<i class="ace-icon fa fa-chevron-up"></i>
+	</a>
+	<a href="<%=staffs_ajax_base_url(:id=>@user.id)%>" class="ajax_iframe">
+		<i class="ace-icon fa fa-pencil-square-o blue"></i>
+	</a>
+</div>
+</div>
+<div class="widget-body">
+	<div class="widget-main no-padding">
 <div class="profile-user-info profile-user-info-striped">
 	<div class="profile-info-row">
 		<div class="profile-info-name"> 姓名 </div>
@@ -46,4 +62,6 @@
 			<%=@user.baseinfo.political%>
 		</div>
 	</div>
+</div>
+</div>
 </div>
