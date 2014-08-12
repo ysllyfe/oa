@@ -1,0 +1,31 @@
+
+	<!-- #section:elements.form -->
+	<div class="form-group">
+		<label for="form-field-1" class="col-sm-2 control-label no-padding-right"> 系统用户 </label>
+
+		<div class="col-sm-9">
+<% @sysgroups.each do |g| %>
+<b><%=g.name%></b>
+<%=_depart_checkbox g.departments,@sm.departments%>
+<hr />
+<% end %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="form-field-1-1" class="col-sm-2 control-label no-padding-right"> 短信用户 </label>
+
+		<div class="col-sm-9">
+<%= _smsgroup_checkbox @smsgroups,@sm.smsgroups %>
+		</div>
+	</div>
+
+	<div class="space-4"></div>
+
+	<div class="form-group">
+		<label for="form-input-readonly" class="col-sm-2 control-label no-padding-right"> 短信内容 </label>
+
+		<div class="col-sm-9">
+<%=text_area_tag :info,@sm.info,'class'=>'form-control'%>
+		</div>
+	</div>

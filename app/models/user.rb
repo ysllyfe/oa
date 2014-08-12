@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 	has_many :contacts,dependent: :destroy
 	has_and_belongs_to_many :rolegroups,:association_foreign_key=>'rolepart_id'
 	has_and_belongs_to_many :roles
+	has_and_belongs_to_many :smsgroups
 	before_save :encrypt_password
 	belongs_to :group
 	def attachments

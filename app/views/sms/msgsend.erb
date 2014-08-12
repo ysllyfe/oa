@@ -1,0 +1,26 @@
+<div class="page-header">
+	<h1>
+		短信平台
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			短信发送中...
+		</small>
+	</h1>
+</div>
+<p>请注意下面手指向的短信发送进度，在发送过程中，不要关闭当前页面。</p>
+<h4 class="pink">
+	<i class="ace-icon fa fa-hand-o-right icon-animated-hand-pointer blue"></i>
+	<span class="green" id="sms_send_response"> 正在发送中... </span>
+</h4>
+<hr />
+<%= form_for @sm,:url=>"#",:html=>{:class=>'form-horizontal'} do |f| %>
+<%= render 'form' %>
+<% end %>
+<script type="text/javascript">
+$.ajax({
+    url: "<%=msgsending_sm_url(@sm.id)%>",
+    success: function(msg){
+       $('#sms_send_response').html(msg);
+    }
+});
+</script>

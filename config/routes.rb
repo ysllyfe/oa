@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   resources :articles do
     post 'search',on: :collection
   end
-  
+  #短信平台
+  resources :sms do
+    get 'msgsend',on: :member
+    get 'msgsending',on: :member
+  end
+  #公司通知
   resources :notices do 
     put 'check',on: :member
   end

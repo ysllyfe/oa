@@ -1,0 +1,22 @@
+<div class="page-header">
+	<h1>
+		短信平台
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			添加新短信
+		</small>
+	</h1>
+</div>
+<p>系统剩余短信条数：<%=@num%>，约可发送：<%=(@num/1.3).ceil%>条短信( 1.3 : 1 )</p>
+<%= form_for @sm,:url=>sms_url,:html=>{:class=>'form-horizontal'} do |f| %>
+<%=render 'form'%>
+<div class="clearfix form-actions">
+	<div class="col-md-offset-3 col-md-9">
+		<button type="submit" class="btn btn-info">
+			<i class="ace-icon fa fa-check bigger-110"></i>
+			提交
+		</button>
+
+	</div>
+</div>
+<% end %>
