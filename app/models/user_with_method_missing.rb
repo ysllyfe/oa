@@ -38,14 +38,7 @@ class User < ActiveRecord::Base
 				#以config_开头的，说明是config
 				#是我们要的，进行操作
 				name = var_name.gsub("config_", '')
-				if(name == 'global')
-					string = args.first
-					name = string[0]
-					value = string[1]
-				else
-					value = args.first.to_s
-				end
-				
+				value = args.first.to_s
 				if item = Setting.find_by(user_id:self.id,name:name)
 	        item.update_attribute(:value, value)
 	      else
@@ -55,10 +48,6 @@ class User < ActiveRecord::Base
 		else
 			if(method_name.index("config_") === 0)
 				name = method_name.gsub("config_", '')
-				if(name == 'global')
-					string = args.first
-					name = string[0]
-				end
 				s = Setting.find_by(name: name,user_id: self.id)
 				if s
 					s.value

@@ -1,0 +1,20 @@
+<div class="accordion-style1 panel-group" id="accordion">
+<% @item.item_summaries.each_with_index do |f,index| %>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+			<a class="accordion-toggle <%=index==0 ? '' : 'collapsed'%>" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=f.id%>">
+				<i class="ace-icon fa fa-angle-down bigger-110" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i>
+				&nbsp;<%=f.name%>
+			</a>
+		</h4>
+	</div>
+
+	<div class="panel-collapse collapse <%=index==0 ? 'in' : ''%>" id="collapse<%=f.id%>">
+		<div class="panel-body">
+		<%=f.info%>
+		</div>
+	</div>
+</div>
+<% end %>
+</div>

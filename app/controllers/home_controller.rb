@@ -2,6 +2,7 @@
 class HomeController < Admin
 	skip_before_filter :controller_role
 	def index
+		
 	end
 	def role_deny
 	end

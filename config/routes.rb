@@ -57,6 +57,9 @@ Rails.application.routes.draw do
     resources :search do 
       get 'search',on: :collection
     end
+    resources :infos do 
+      post 'nav_search',on: :collection
+    end
     resources :trucks,:costs,:fees,:icosts,:infos
   end
 
@@ -90,4 +93,13 @@ Rails.application.routes.draw do
   post 'ueditor/getRemoteImage' => 'ueditor#getRemoteImage'
   post 'ueditor/fileUp' => 'ueditor#fileUp'
   post 'ueditor/getMovie' => 'ueditor#getMovie'
+
+
+
+
+
+  #个人相关
+  resources :settings do 
+    put 'userconfig', on: :collection
+  end
 end

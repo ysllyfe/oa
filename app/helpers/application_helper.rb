@@ -1,4 +1,7 @@
 module ApplicationHelper
+	def _user_space_url(user)
+		'#'
+	end
 	def _true_or_false(t)
 		if t
 			raw '<span style="color: green">是</span>'
