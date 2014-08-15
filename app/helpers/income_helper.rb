@@ -1,4 +1,19 @@
 module IncomeHelper
+	include TimeBase
+	def _recent_month(url='',block="btn-block",num=7)
+		html = []
+		s = url.count('?')>0 ? '&' : '?'
+		@time = Time.new
+		colors = %w(btn-purple btn-default btn-primary btn-success  btn-pink btn-warning btn-info  btn-danger)
+		(0..num).each do |n|
+			addon = s
+			name = _time_std(@time-n.month).month
+			month = _month(@time-n.month)
+			addon += 'btime=' + month.split('/')[0] + '&etime=' + month.split('/')[1]
+			html << '<a href="'+url+addon+'" class="btn '+block+' '+colors[n]+'">'+name.to_s+'月</a>'
+		end
+		raw html.join('')
+	end
 	def yuan(s)
 		number_to_currency(s,:unit=>'')
 	end
@@ -12,7 +27,7 @@ module IncomeHelper
 	end
 	def _income_status(income)
 		#checked
-		return raw "<span class=\"label label-info arrowed\">#{t('income.status.checked')}</span>" if income.checked == true
+		return raw "<span class=\"label label-info arrowed\">#{t('income.status.checked')}</span>" if income.checked == 1
 		if income.submit == true || income.submit == 1
 		#<span class="label label-success arrowed">Success</span>
 			raw "<span class=\"label label-success arrowed\">#{t('income.status.submit')}</span>"

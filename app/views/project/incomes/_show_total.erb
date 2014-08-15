@@ -1,0 +1,57 @@
+<h4>合计</h4>
+<div class="widget-box">
+	<div class="widget-body">
+		<div class="widget-main">
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>1，成本共计</h4>
+					<blockquote>
+						<p class="lighter line-height-125">
+<ol>
+<li>调货成本合计: <%=_round @cb[:dcb]%></li>
+<li>运费合计: <%=_round @cb[:ycb]%></li>
+<li>其它费用合计: <%=_round @cb[:qcb]%></li>
+</ol>
+<span class="text-primary">共计: <%=_round @cb[:cb]%></span>
+						</p>
+					</blockquote>
+					<h4>2，销售共计: <%=@cb[:sell]%></h4>
+					<h4>3，重量共计:</h4>
+					<blockquote>
+						<p class="lighter line-height-125">
+<ol>
+<li>进货重量: <%=_round @cb[:yweight]%></li>
+<li>销售重量: <%=_round @cb[:weight]%></li>
+</ol>
+						</p>
+					</blockquote>
+				</div>
+			</div>
+
+			<hr>
+			<h4>利润：<%=_round @cb[:lr]%></h4>
+			<hr />
+<div class="btn-group">
+<% if @income.checked == 1 %>
+<a class="btn btn-xs btn-warning" data-method="put" data-confirm="取消审核？" rel="nofollow" data-remote="true" href="<%=check_project_audit_index_url(:income=>@income.id)%>">
+<i class="ace-icon fa fa-undo bigger-120"></i>
+</a>
+<% else %>
+<a class="btn btn-xs btn-success" data-method="put" data-confirm="审核通过？" rel="nofollow" data-remote="true" href="<%=check_project_audit_index_url(:income=>@income.id)%>">
+<i class="ace-icon fa fa-check-square-o bigger-120"></i>
+</a>
+<% end %>
+
+<a class="btn btn-xs btn-danger" href="<%=project_income_url(@income)%>" data-method="delete" data-remote='true' data-confirm="确认删除？" rel="nofollow">
+<i class="ace-icon fa fa-trash-o bigger-120"></i>
+</a>
+
+</div>
+			<hr />
+			公式：<br />
+			调货成本 + 运费 + 其它费用 = 成本<br />
+			销售情况 + 费用冲抵 = 销售共计<br />
+			销售 - 成本 = 利润<br />
+		</div>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<div class="widget-box">
+	<div class="widget-header">
+		<h5 class="widget-title">工程收款</h5>
+	</div>
+
+	<div class="widget-body">
+		<div class="widget-main">
+<%=form_for @payment,:url=>project_finance_index_url(:item_id=>@item.id),:remote=>true do |f|%>
+<div>
+<label>
+收款时间：
+</label>
+<%=f.text_field :pay_time,'data-date-format'=>'yyyy-mm-dd',:class=>'input-small date-picker'%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+收款类型：
+</label>
+<%=f.select :ptype,[['货款',1],['营业外收入',2]]%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+收款金额：
+</label>
+<%=f.text_field :money,:class=>'form-controls'%>
+</div>
+<div class="space space-8"></div>
+<div>
+<label>
+收款备注：
+</label>
+<%=f.text_field :info,:class=>'form-controls'%>
+</div>
+<div class="clearfix form-actions">
+	<div class="">
+		<button type="submit" class="btn btn-info btn-block">
+			<i class="ace-icon fa fa-check bigger-110"></i>
+			<%=t("submit")%>
+		</button>
+
+	</div>
+</div>
+<% end %>
+		</div>
+	</div>
+</div>
+
+<script src="/assets/js/date-time/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+$('.date-picker').datepicker({
+	autoclose: true,
+	todayHighlight: true
+})
+//show datepicker when clicking on the icon
+.next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+</script>

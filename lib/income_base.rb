@@ -14,6 +14,18 @@ module IncomeBase
 		profitrate_percent = _round(profit / price) * 100
 		item.update_attributes({:weight=>weight,:iweight=>iweight,:price=>price,:profit=>profit,:profitrate_percent=>profitrate_percent,:profitrate_yun=>profitrate_yun})
 	end
+	def item_payment_rebuild(item)
+		payments = item.item_payments.where(is_checked: true)
+		pay = ope_pay = 0.0
+		payments.each do |f|
+			if f.ptype == 1
+				pay += _round(f.money)
+			else
+				ope_pay += _round(f.money)
+			end
+		end
+		item.update_attributes({:payments=>pay,:operate_payments=>ope_pay})
+	end
 	def cb_count(income)
 		#成本计算
 		trucks = income.trucks
@@ -43,12 +55,11 @@ module IncomeBase
 		#销售重量
 		_weight = 0.0
 
-
 		_ycb = trucks.inject(0.0) do |mem, var|
 			if var.chartered == true
 				mem + _round(var.cost)
 			else
-				mem + _round(var.cost.to_f * var.price.to_f) 
+				mem + _round(var.weight.to_f * var.price.to_f) 
 			end
 		end
 		_qcb = fees.inject(0.0){|mem,var| mem + _round(var.cost)}

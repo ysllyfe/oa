@@ -20,7 +20,7 @@
 <% @items.each do |t| %>
 <tr>
 <td><%=t.id%></td>
-<td><%=_tip_item t,search_project_finance_index_url(:item_id=>t.id)%><%=_item_status(t)%></td>
+<td><%=_tip_item t,search_project_search_index_url(:item_id=>t.id)%><%=_item_status(t)%></td>
 <td><%=t.weight%></td>
 <td align="right">
 <%= yuan t.price%>

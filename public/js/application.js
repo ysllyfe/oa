@@ -17,4 +17,13 @@ $(document).ready(function(){
 		event.preventDefault();
 	});
 
-})
+});
+function render_error(msg,title='页面出错了，提示信息如下！'){
+	$.gritter.add({
+			// (string | mandatory) the heading of the notification
+			title: title,
+			// (string | mandatory) the text inside the notification
+			text: msg,
+			class_name: 'gritter-error gritter-center'
+		});
+}

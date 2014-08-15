@@ -10,7 +10,18 @@ class Project::IncomesController < Project
 	def index
 		@incomes = @logged_in_user.incomes.where(checked:false).order('id desc')
 	end
-
+	def show
+		#show 与original相同，只是模板不一样
+		@factories = Factory.where(softdelete:false).order('id asc')
+		@steeltypes = Steeltype.where(softdelete:false).order('id asc')
+		@income = Income.find(params[:id])
+		@trucks = @income.trucks
+		@sells = @income.sells
+		@fees = @income.fees
+		@fee_sells = @income.fee_sells
+		@cb = cb_count(@income)
+		@profit = @income.profit
+	end
 	def original!
 		#提交表单到审核
 		@income = @logged_in_user.incomes.find(params[:id])
@@ -32,7 +43,7 @@ class Project::IncomesController < Project
 		redirect_to project_incomes_url and return
 	end
 	def original
-
+		#show 与original相同，只是模板不一样
 		@factories = Factory.where(softdelete:false).order('id asc')
 		@steeltypes = Steeltype.where(softdelete:false).order('id asc')
 		@income = Income.find(params[:id])
@@ -83,8 +94,17 @@ class Project::IncomesController < Project
 
 	def destroy
 		@income = Income.find(params[:id])
-		@income.destroy
-		redirect_to project_incomes_url
+		rebuild = false
+		if @income.checked == 1
+			rebuild = true
+			item = Item.find(@income.item_id)
+		end
+		@income.profit.delete if @income.profit
+		@income.delete
+		if rebuild
+			item_profit_rebuild(item)
+		end
+		render :text=>'window.location.reload();' and return
 	end
 
 	def set_submenu_and_breadcrumbs

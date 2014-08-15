@@ -1,0 +1,26 @@
+<div class="page-header">
+	<h1>
+		利润表查询
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			查询出的利润表 <a href="<%=project_finance_index_url%>">返回上一步</a>
+		</small>
+	</h1>
+</div>
+<div class="row">
+<div class="col-xs-12">
+<blockquote>
+<p>
+1，共计利润表<%=@profit.count%>张<br />
+2，毛利润（预估）计算方式为：销售金额-进货成本-其它成本<br />
+3，毛利润率（预估）计算方式为：毛利润（预估）/进货重量
+</p>
+<p>
+
+</p>
+
+</blockquote>
+<hr>
+</div>
+</div>
+<%=render 'profit'%>

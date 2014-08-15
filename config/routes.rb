@@ -46,8 +46,18 @@ Rails.application.routes.draw do
       get 'original',on: :member
       post 'original'=>'incomes#original!',on: :member
     end
-
-    resources :trucks,:costs,:fees,:icosts,:search,:audit,:finance,:infos
+    resources :audit do 
+      put 'check',on: :collection
+    end
+    resources :finance do
+      get 'search',on: :collection
+      put 'ended',on: :collection
+      put 'check',on: :member
+    end
+    resources :search do 
+      get 'search',on: :collection
+    end
+    resources :trucks,:costs,:fees,:icosts,:infos
   end
 
   #超级管理(用户，角色，角色组)

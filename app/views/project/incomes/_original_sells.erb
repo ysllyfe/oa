@@ -11,7 +11,7 @@
 <td class="hidden-480"><%=_round(t.price.to_f * t.weight.to_f)%></td>
 <td><%=t.sell_weight%><%=t.weight_unit%></td>
 <td><%=t.sell_price%></td>
-<td class="hidden-480"><%= t.sell_weight.to_f * t.sell_price.to_f %></td>
+<td class="hidden-480"><%= _round t.sell_weight.to_f * t.sell_price.to_f %></td>
 </tr>
 <% end %>
 	</tbody>
