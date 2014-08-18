@@ -1,10 +1,13 @@
 #encoding:utf-8
 class ArticlesController < Admin
 	before_filter :searchbox
-	def controller_role
-	end
+	before_filter :action_role,:except=>[:index,:search,:show]
 	def index
-		@articles = Article.all.order('')
+		if(@logged_in_user.has_role?('like article_'))
+			@articles = Article.all.order('id desc').page(params[:page]).per(20)
+		else
+			@articles = @logged_in_user.group.articles.where(is_checked: 1).page(params[:page]).per(20)
+		end
 	end
 
 	def search
@@ -22,11 +25,20 @@ class ArticlesController < Admin
 	end
 
 	def create
-
+		@article = Article.new(sys_param_params)
+		@article.user_id = @logged_in_user.id
+		@article.save!
+		@article.set_group(params[:article][:group_id])
+		@article.content = params[:editorValue]
+		redirect_to articles_url and return
 	end
 
 	def edit
 		@article = Article.find_by(hash_id:params[:id])
+		if @article.is_checked == 1 && !@logged_in_user.has_role?('article_check')
+			flash[:error] = "文章已审核，你没有对应的权限，对应的用户权限为`article_check`"
+			redirect_to deny_url and return false
+		end
 		@groups = Group.where(system:1)
 		@article.group_id = @article.groups.collect{|x| x.id}
 	end
@@ -39,15 +51,48 @@ class ArticlesController < Admin
 		redirect_to articles_url and return
 	end
 
+	def check
+		if !@logged_in_user.has_role?('article_check')
+			flash[:error] = "你没有对应的权限，对应的用户权限为`article_check`"
+			redirect_to deny_url and return false
+		end
+		@article = Article.find_by(hash_id:params[:id])
+		if @article.is_checked == 1
+			@article.update_attribute(:is_checked,0)
+		else
+			@article.update_attribute(:is_checked,1)
+		end
+		redirect_to articles_url and return
+	end
 	def destroy
-
+		@article = Article.find_by(hash_id:params[:id])
+		if @article.is_checked == 1
+			if !@logged_in_user.has_role?('article_check')
+				flash[:error] = "文章已审核，你没有对应的删除权限，对应的用户权限为`article_check`"
+				redirect_to deny_url and return false
+			end
+		end
+		@article.destroy!
+		redirect_to articles_url and return
 	end
 
 
 	private
 
 	def searchbox
-		@searchbox_data = Article.all.order('id ASC')
+		if(@logged_in_user.has_role?('like article_'))
+			@searchbox_data = Article.all.order('id desc')
+		else
+			@searchbox_data = @logged_in_user.group.articles.where(is_checked: 1)
+		end
+	end
+	def action_role
+		if !@logged_in_user.has_role?('like article_')
+			flash[:error] = "你没有对应的权限访问这个页面，对应的用户权限为`like article_`"
+			redirect_to deny_url and return false
+		end
+	end
+	def controller_role
 	end
 
   def sys_param_params

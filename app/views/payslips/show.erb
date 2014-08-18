@@ -1,0 +1,59 @@
+<div class="page-header">
+	<h1>
+		工资管理
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			<%=@payslip.name%>
+		</small>
+	</h1>
+</div>
+<table class="table table-striped table-condensed">
+  <thead>
+      <tr>
+        <th>姓名</th>
+        <th>试用日工资</th>
+        <th>日工资</th>
+        <th>岗位工资</th>
+        <th>绩效工资</th>
+        <th>全勤奖</th>
+        <th>岗位补贴</th>
+        <th>特殊津贴</th>
+        <th>其它福利</th>
+        <th>事假</th>
+        <th>迟到早退</th>
+        <th>公司社保</th>
+        <th>社保</th>
+        <th>其它</th>
+        <th>本月应发</th>
+        <th>个税</th>
+        <th>公户转出工资</th>
+        <th>报销现金工资</th>
+        <th>备注</th>
+      </tr>
+  </thead>
+  <tbody>
+<% @lines.each do |line|%>
+  <tr>
+<td><a href="/payslips/<%=@payslip.id%>/details?user_id=<%=line.user_id%>"><%=line.username%></a></td>
+<td><%=line.probation_wage%></td>
+<td><%=line.wage%></td>
+<td><%=line.post_wage%></td>
+<td><%=line.performance_wage%></td>
+<td><%=line.attendance%></td>
+<td><%=line.job_subsidies%></td>
+<td><%=line.spe_subsidies%></td>
+<td><%=line.other_subsidies%></td>
+<td><%=line.leave_plus%></td>
+<td><%=line.late_plus%></td>
+<td><%=line.ltd_plus%></td>
+<td><%=line.sb_plus%></td>
+<td><%=line.other_plus%></td>
+<td><%=line.wage_total%></td>
+<td><%=line.fax%></td>
+<td><%=line.wage_real%></td>
+<td><%=line.cash_wage%></td>
+<td><%=line.info%></td>
+  </tr>
+<% end %>
+  </tbody>
+  </table>

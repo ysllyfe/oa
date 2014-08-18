@@ -1,0 +1,56 @@
+<table class="gridtable">
+  <tr>
+    <td rowspan="2" class="top">姓名</td>
+    <td rowspan="2" class="top">试用日工资</td>
+    <td rowspan="2" class="top">日工资</td>
+    <td colspan="6" class="top">工资结构</td>
+    <td colspan="5" class="top">应扣款</td>
+    <td rowspan="2" class="top">本月应发</td>
+    <td rowspan="2" class="top">个人所得税</td>
+    <td rowspan="2" class="top">公户转出工资</td>
+    <td rowspan="2" class="top">报销现金工资</td>
+    <td rowspan="2" class="top">个人工资总额</td>
+  </tr>
+  <tr>
+    <td class="top">岗位工资</td>
+    <td class="top">绩效工资</td>
+    <td class="top">全勤奖</td>
+    <td class="top">岗位补贴</td>
+    <td class="top">特殊津贴</td>
+    <td class="top">其它福利</td>
+    <td class="top">事假</td>
+    <td class="top">迟到/早退</td>
+    <td class="top">公司社保</td>
+    <td class="top">个人社保</td>
+    <td class="top">其它</td>
+  </tr>
+  <tr>
+<td><%=@details.username%></td>
+<td><%=@details.probation_wage%></td>
+<td><%=@details.wage%></td>
+<td><%=@details.post_wage%></td>
+<td><%=@details.performance_wage%></td>
+<td><%=@details.attendance%></td>
+<td><%=@details.job_subsidies%></td>
+<td><%=@details.spe_subsidies%></td>
+<td><%=@details.other_subsidies%></td>
+<td><%=@details.leave_plus%></td>
+<td><%=@details.late_plus%></td>
+<td><%=@details.ltd_plus%></td>
+<td><%=@details.sb_plus%></td>
+<td><%=@details.other_plus%></td>
+<td><%=@details.wage_total%></td>
+<td><%=@details.fax%></td>
+<td style="color:#00f"><%=@details.wage_real%></td>
+<td style="color:#00f"><%=@details.cash_wage%></td>
+<td style="color:#f00"><%=@details.wage_real.to_f+@details.cash_wage.to_f+@details.fax.to_f+@details.sb_plus.to_f+@details.ltd_plus.to_f%></td>
+  </tr>
+</table>
+<% if @details.info %>
+<hr />
+<div class="well"><%=@details.info%></div>
+<% end %>
+<hr />
+<div class="alert alert-info">
+个人工资总额 = 公户转出工资 + 报销现金工资 + 个人所得税 + 公司社保 + 个人社保
+</div>

@@ -20,7 +20,9 @@ class Article < ActiveRecord::Base
 			n.save!
 		end
 	end
-
+	def group_name
+		self.groups.collect{|x| x.name}.join(' ')
+	end
 	def set_group(group_id)
 		self.groups.delete_all
 		group_id.each do |g|

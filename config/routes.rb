@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   #公司制度
   resources :articles do
     post 'search',on: :collection
+    put 'check',on: :member
   end
   #短信平台
   resources :sms do
@@ -96,7 +97,11 @@ Rails.application.routes.draw do
 
 
 
-
+  resources :payslips do 
+    get 'my',:on=>:collection
+    post 'submit',:on=>:collection
+    put 'check',:on=>:member
+  end
 
   #个人相关
   resources :settings do 

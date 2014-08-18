@@ -16,7 +16,11 @@ class NoticesController < Admin
 		if params[:checked] && params[:checked] == 'true'
 			@notices = Notice.where(checked:false).order('id desc').page(params[:page]).per(10)
 		else
-			@notices = Notice.where(checked:true).order('id desc').page(params[:page]).per(10)
+			if @logged_in_user.has_role?('like notice_')
+				@notices = Notice.where(checked:true).order('id desc').page(params[:page]).per(10)
+			else
+				@notices = @logged_in_user.group.notices.where(checked:true).order('id desc').page(params[:page]).per(10)
+			end
 		end
 	end
 	def show

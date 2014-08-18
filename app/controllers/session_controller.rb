@@ -3,6 +3,7 @@ class SessionController < Admin
 	skip_before_filter :login_required
 	skip_before_filter :set_controller_sidebar
 	skip_before_filter :controller_role
+	skip_before_filter :set_skin
 	def login
 		@type = rand(2)
 		@user = User.new

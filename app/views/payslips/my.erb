@@ -1,0 +1,46 @@
+<style type="text/css">
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	width: 100%;
+	border-collapse: collapse;
+}
+table.gridtable td.top {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+	text-align: center;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</style>
+
+<div id="accordion" class="accordion-style1 panel-group">
+<% @payslips.each do |f| %>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a class="accordion-toggle collapsed" onclick="c('<%=f.id%>')" data-toggle="collapse" data-parent="#accordion" href="#<%=f.id%>">
+					<i class="ace-icon fa fa-angle-right bigger-110" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i>
+					&nbsp;<%=f.name%>
+				</a>
+			</h4>
+		</div>
+		<div class="panel-collapse collapse" id="<%=f.id%>">
+			<div class="panel-body">
+				<i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i>
+			</div>
+		</div>
+	</div>
+<% end %>
+</div>
