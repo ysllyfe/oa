@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   include AuthBase
   include TimeBase
   include IncomeBase
-
+  include NotificationBase
   #common_function
 end

@@ -38,6 +38,7 @@ class NoticesController < Admin
 		@notice.user_id = @logged_in_user.id
 		@notice.save!
 		@notice.set_group(params[:notice][:group_id])
+		add_notification(@logged_in_user.username,'notice_check',notices_url(:checked=>'true'),"提交了通知#{@notice.title}")
 		redirect_to notices_url
 	end
 	def edit

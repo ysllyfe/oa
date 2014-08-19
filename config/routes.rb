@@ -102,7 +102,8 @@ Rails.application.routes.draw do
     post 'submit',:on=>:collection
     put 'check',:on=>:member
   end
-
+  get 'notifications' => 'notifications#index'
+  put 'notifications' => 'notifications#show'
   #个人相关
   resources :settings do 
     put 'userconfig', on: :collection

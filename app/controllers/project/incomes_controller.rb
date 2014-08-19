@@ -40,6 +40,9 @@ class Project::IncomesController < Project
 		end
 		@income.profit = @profit
 		@income.update_attribute(:submit,true)
+		
+		add_notification(@logged_in_user.username,'income_check',project_audit_index_url,"提交了新的利润表")
+		
 		redirect_to project_incomes_url and return
 	end
 	def original

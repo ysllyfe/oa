@@ -4,6 +4,7 @@ class SessionController < Admin
 	skip_before_filter :set_controller_sidebar
 	skip_before_filter :controller_role
 	skip_before_filter :set_skin
+	skip_before_filter :notification_show
 	def login
 		#@type = rand(2)
 		bgs = %w(16 28 38 66 112 113 125 6)

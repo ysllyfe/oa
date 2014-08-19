@@ -1,1 +1,22 @@
-<div style="height:1000px"></div>
+<h2><img class="profile" src="<%=@logged_in_user.photos.url(:s)%>" alt="<%=@logged_in_user.username%>" /><%=@logged_in_user.username%>，欢迎回来。<span class="hidden-480">龙杰钢贸，力志缔造中国领先的钢铁贸易产业链</span>
+</h2>
+<hr />
+
+<div class="row">
+	<div class="col-sm-6">
+		<h4>最新通知</h4>
+		<ul class="default_notice">
+<% @notices.each do |f|%>
+<li><a href="<%=notice_url(f.id)%>"><%=f.title%></a> <span><%=f.created_at.to_s(:m)%></span></li>
+<% end %>
+		</ul>
+	</div>
+	<div class="col-sm-6">
+		<h4>公司制度</h4>
+		<ul class="default_notice">		
+<% @articles.each do |f|%>
+<li><a href="<%=article_url(f.hash_id)%>"><%=f.title%></a> <span><%=f.dateline%></span></li>
+<% end %>
+		</ul>
+	</div>
+</div>

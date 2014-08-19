@@ -6,3 +6,15 @@ img.profile{
     margin-right: 10px;
     max-width: 40px;
 }
+.default_notice{margin:0;}
+.default_notice li {
+    border-bottom: 1px solid #eee;
+    list-style: none outside none;
+    padding: 12px 0;
+}
+.default_notice li a {
+    font-size: 14px;
+}
+.default_notice li span {
+    float: right;
+}

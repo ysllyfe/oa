@@ -5,6 +5,7 @@ class Admin < ApplicationController
 	before_filter :set_controller_sidebar
 	before_filter :controller_role
 	before_filter :set_skin
+	before_filter :notification_show
 	#rescue_from ActionView::MissingTemplate,:with => :tmp_tpl
 	def _back(msg=nil)
 		flash[:notice] = msg
@@ -13,6 +14,10 @@ class Admin < ApplicationController
 	def set_skin
 		@skin = logged_in_user.config_skin
 		@skin = 'no-skin' if !@skin
+	end
+	def notification_show
+		@notification_count = Notification.where(user_id:logged_in_user.id).count
+		@notifications = Notification.where(user_id:logged_in_user.id).order('id desc').limit(8)
 	end
 	private
 	def set_sidebar_breadcrumbs

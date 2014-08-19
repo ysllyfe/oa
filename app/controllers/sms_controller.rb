@@ -25,6 +25,7 @@ class SmsController < Admin
 		@sm.user_id = @logged_in_user.id
 		@sm.status = 'notsend'
 		@sm.save!
+		add_notification(@logged_in_user.username,'sms_check',sms_url,"提交了短信")
 		redirect_to sms_url and return
 	end
 	def update

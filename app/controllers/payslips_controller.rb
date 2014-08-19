@@ -64,6 +64,8 @@ class PayslipsController < Admin
 				@item.save
 			end
 		end
+
+		add_notification(@logged_in_user.username,'payslips_check',payslips_url,"提交了新工资单")
 		redirect_to payslips_url and return
 	end
 

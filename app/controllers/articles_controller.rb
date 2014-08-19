@@ -30,6 +30,9 @@ class ArticlesController < Admin
 		@article.save!
 		@article.set_group(params[:article][:group_id])
 		@article.content = params[:editorValue]
+
+		add_notification(@logged_in_user.username,'article_check',articles_url,"提交了制度#{@article.title}")
+
 		redirect_to articles_url and return
 	end
 
