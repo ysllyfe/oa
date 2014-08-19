@@ -34,19 +34,33 @@
 		<script src="/assets/js/html5shiv.js"></script>
 		<script src="/assets/js/respond.min.js"></script>
 		<![endif]-->
+		<style type="text/css">
+.s-skin-container {
+    background-attachment: fixed;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -10;
+}
+		</style>
 	</head>
 
-	<body class="login-layout <%= @type == 0 ? 'light-login' : 'blur-login'%>">
+	<body class="login-layout <%= @type == 0 ? 'light-login' : 'blur-login'%>" style="background:url('')">
+		<div style="background-color:#404040;background-image:url('<%=@bg%>');" class="s-skin-container"></div>
 		<div class="main-container">
 			<div class="main-content">
 				<div class="row">
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
-							<div class="center">
-								<h1>
-									<span class="<%= @type == 0 ? 'grey' : 'white'%>" id="id-text2"><%=t("setting.appname")%></span>
-								</h1>
-								<h4 class="<%= @type == 0 ? 'blue' : 'light-blue'%>" id="id-company-text">&copy; <%=t("setting.company_name")%></h4>
+							<div class="center" style="padding-top:30px">
+								<span>
+									<img src="/imgs/logo.png" />
+								</span>
 							</div>
 
 							<div class="space-6"></div>

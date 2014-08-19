@@ -5,7 +5,11 @@ class SessionController < Admin
 	skip_before_filter :controller_role
 	skip_before_filter :set_skin
 	def login
-		@type = rand(2)
+		#@type = rand(2)
+		bgs = %w(16 28 38 66 112 113 125 6)
+
+		@type = 0
+		@bg = '/imgs/bg/'+bgs[rand(bgs.length)-1]+'.jpg'
 		@user = User.new
 		render :layout=>'session' and return
 	end
