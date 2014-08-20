@@ -15,12 +15,28 @@ class AccountsController < Admin
 	def rolegroups
 		@user = User.find(params[:id])
 	end
+	def roles
+		@user = User.find(params[:id])
+		@roles = Role.where(enable:true).order('`group` asc')
+		@user_roles = @user.roles.collect { |e| e.id }
+	end
+	def role_ajax_change
+		@user = User.find(params[:id])
+		@role = Role.find(params[:roleid])
+		if(params[:m] == 'add')
+			@user.roles << @role
+		else
+			@user.roles.delete(@role)
+		end
+		render :text=>"user '#{@user.username}' `#{params[:m]}` role #{@role.name}"
+	end
 	def index
 		@users = User.all.order('injob desc,id asc').page(params[:page]).per(15)
 		if(params[:id])
 			@users = @users.where(id:params[:id])
 		end
 	end
+
 	def new
 	end
 	def edit

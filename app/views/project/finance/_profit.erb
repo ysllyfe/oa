@@ -1,7 +1,25 @@
 <table id="sample-table-1" class="table table-striped table-bordered table-hover">
 <thead><tr><th class="hidden-480">送货日期</th><th>项目名称</th><th>销售金额</th><th>销售重量</th><th class="hidden-480">进货重量</th><th>毛利润(预估)</th><th>利润率(预估)</th><th></th></tr></thead>
 <tbody>
+<tr class="profittotal">
+	<td class="hidden-480">总计：</td>
+	<td>&nbsp;</td>
+	<td><span class="total_price">...</span>元</td>
+	<td><span class="total_weight">...</span>吨</td>
+	<td class="hidden-480"><span class="total_iweight">...</span>吨</td>
+	<td><span class="total_profits">...</span>元</td>
+	<td><span class="total_yugu">...</span>元/吨</td>
+	<td>&nbsp;</td>
+</tr>
+
+<% price = weight = iweight = profits = yugu = 0.0 %>
 <% @profit.each do |f|%>
+<%
+price += f.price.to_f
+weight += f.weight.to_f	
+iweight += f.iweight.to_f
+profits += f.profits.to_f
+%>
 <tr>
 <td class="hidden-480"><%=f.time%></td>
 <td>
@@ -17,3 +35,11 @@
 <% end %>
 </tbody>
 </table>
+
+<script type="text/javascript">
+$('.total_price').text('<%=yuan price%>');
+$('.total_weight').text('<%=yuan weight%>');
+$('.total_iweight').text('<%=yuan iweight%>');
+$('.total_profits').text('<%=yuan profits%>');
+$('.total_yugu').text('<%= (profits/weight).to_i%>');
+</script>

@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 				#以config_开头的，说明是config
 				#是我们要的，进行操作
 				name = var_name.gsub("config_", '')
-				if(name == 'global')
+				if(name.to_s == 'auto')
 					string = args.first
 					name = string[0]
 					value = string[1]

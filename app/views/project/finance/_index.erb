@@ -2,7 +2,7 @@
 	<div class="widget-header widget-header-flat">
 		<h4 class="widget-title lighter">
 			<i class="ace-icon fa fa-university orange"></i>
-			项目名称
+			未结款项目
 		</h4>
 
 		<div class="widget-toolbar">
@@ -14,10 +14,27 @@
 
 	<div class="widget-body">
 		<div class="widget-main no-padding">
+
+			
+<div class="alert alert-danger" style="margin-bottom:0">
+	<button data-dismiss="alert" class="close" type="button">
+		<i class="ace-icon fa fa-times"></i>
+	</button>
+
+	未结款工程项目共有未付款 <span class="tobepay">...</span> 元 
+	<br>
+</div>
 			<table class="table table-bordered table-striped">
 <%=_simple_thead(t("item.finance.search_table"))%>
 				<tbody>
-<% @items.each do |t| %>
+<% remind = 0.0 %>
+<% @items.each do |t|
+if t.ended == 1
+	next
+else
+	remind += _remind_payment(t)
+end
+ %>
 <tr>
 <td><%=t.id%></td>
 <td><%=_tip_item t,search_project_finance_index_url(:item_id=>t.id)%><%=_item_status(t)%></td>
@@ -38,3 +55,5 @@
 		</div><!-- /.widget-main -->
 	</div><!-- /.widget-body -->
 </div><!-- /.widget-box -->
+
+<div id="tobepay" style="display:none"><%=yuan remind%></div>

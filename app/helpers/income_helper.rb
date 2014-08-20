@@ -1,5 +1,28 @@
 module IncomeHelper
 	include TimeBase
+	def profit_notice(profit,item)
+		#利润率预警
+		profits = profit.profits.to_f
+		weight = profit.weight.to_f
+		if profits == 0.0 || weight == 0.0
+			'profitnotice'
+		else
+			if ((item.profitrate_yun.to_f) * 0.9) > (profits / weight) 
+				'profitnotice'
+			else
+				''
+			end
+		end
+	end
+	def profit_count(profits,weight)
+		profits = profits.to_f
+		weight = weight.to_f
+		if profits == 0.0 || weight == 0.0
+			'无数据'
+		else
+			(profits / weight).round(2).to_s + '元/吨'
+		end
+	end
 	def _recent_month(url='',block="btn-block",num=7)
 		html = []
 		s = url.count('?')>0 ? '&' : '?'

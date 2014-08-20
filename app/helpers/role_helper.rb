@@ -14,6 +14,17 @@ module RoleHelper
 			''
 		end
 	end
+	def _user_role(roles,role,user_id=0)
+		check = ''
+		if roles.include?(role)
+			check = 'checked="checked"'
+		end
+		html = []
+		html << '<label class="pull-right inline">'
+		html << '<input type="checkbox" value="'+role.to_s+'" data-id="'+user_id.to_s+'" class="ace ace-switch ace-switch-5" '+check+' id="id-button-borders">'
+		html << '<span class="lbl middle"></span></label>'
+		raw html.join("")
+	end
 	def _group_role(roles,role,rolegroup_id=0)
 		check = ''
 		if roles.include?(role)

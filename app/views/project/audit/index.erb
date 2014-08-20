@@ -10,13 +10,23 @@
 <p>点击项目名称查看当前利润表</p>
 <hr />
 <table class="table table-striped table-bordered table-hover" id="sample-table-1">
-<%=_simple_thead(t("income.table"))%>
+<thead><tr><th>送货日期</th><th>工地项目名称</th>
+<th>销售重量</th>
+<th>进货重量</th>
+<th>销售金额</th>
+<th>毛利润(预估)</th>
+<th>毛利润率(预估)</th>
+<th class="hidden-480">送货人</th><th>状态</th><th>操作</th></tr></thead>
 	<tbody>
 <% @incomes.each do |f|%>
-<tr>
-	<td class="hidden-480"><%=f.id%></td>
+<tr class="<%=profit_notice(f.profit,f.item)%>">
 	<td><%=f.time.to_s(:friendly)%></td>
 	<td><a href="<%=project_income_url(f.id,:from=>request.url)%>"><%=f.item.name if f.item%></a></td>
+	<td><%=f.profit.weight%></td>
+	<td><%=f.profit.iweight%></td>
+	<td><%=yuan f.profit.price%></td>
+	<td><%=yuan f.profit.profits%></td>
+	<td><%=profit_count(f.profit.profits,f.profit.iweight)%></td>
 	<td class="hidden-480"><%=_delvery_user(f.users)%></td>
 
 	<td>

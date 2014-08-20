@@ -1,1 +1,45 @@
-<%=render 'interface'%>
+<div class="tabbable">
+<ul class="nav nav-tabs padding-18">
+	<li class="active">
+		<a href="#home" data-toggle="tab">
+			<i class="green ace-icon fa fa-user bigger-120"></i>
+			个人信息
+		</a>
+	</li>
+
+	<li class="">
+		<a href="#feed" data-toggle="tab">
+			<i class="orange ace-icon fa fa-rss bigger-120"></i>
+			后台界面
+		</a>
+	</li>
+
+	<li class="">
+		<a href="#passwd" data-toggle="tab">
+			<i class="blue ace-icon fa fa-users bigger-120"></i>
+			修改密码
+		</a>
+	</li>
+
+</ul>
+
+	<div class="tab-content no-border padding-24">
+		<div class="tab-pane active" id="home">
+			<%=render 'default'%>
+		</div><!-- /#home -->
+
+		<div class="tab-pane" id="feed">
+			<div class="profile-feed row">
+				<div class="col-sm-12">
+					<%=render 'interface'%>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /#feed -->
+
+		<div class="tab-pane" id="passwd">
+			<!-- #section:pages/profile.friends -->
+				<%=render 'passwd'%>
+		</div><!-- /#friends -->
+
+		
+</div>

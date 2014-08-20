@@ -1,7 +1,7 @@
 #encoding:utf-8
 class Project::AuditController < Project
 	def index
-		@incomes = Income.all.order('checked asc,id desc').page(params[:page]).per(20)
+		@incomes = Income.where(submit:1).order('checked asc,id desc').page(params[:page]).per(20)
 	end
 	def check
 		@income = Income.find(params[:income])

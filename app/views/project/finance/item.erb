@@ -42,19 +42,19 @@
 <% end %>
 <div class="tabbable">
 <ul id="myTab4" class="nav nav-tabs padding-12 tab-color-blue background-blue">
-	<li class="active">
+	<li class="<%=@view == 'payments' ? '' : 'active'%>">
 		<a href="#home4" data-toggle="tab">利润表</a>
 	</li>
 
-	<li>
+	<li class="<%=@view == 'payments' ? 'active' : ''%>">
 		<a href="#profile4" data-toggle="tab">工程收款</a>
 	</li>
 </ul>
 <div class="tab-content">
-<div class="tab-pane in active" id="home4">
+<div class="tab-pane<%=@view == 'payments' ? '' : ' in active'%>" id="home4">
 <%=render 'profit'%>
 </div>
-<div class="tab-pane" id="profile4">
+<div class="tab-pane<%=@view == 'payments' ? ' in active' : ''%>" id="profile4">
 <%=render 'payment'%>
 </div>
 </div>

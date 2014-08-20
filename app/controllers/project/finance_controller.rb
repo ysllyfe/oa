@@ -20,6 +20,7 @@ class Project::FinanceController < Project
     render :text=>'window.location.reload();' and return
 	end
 	def search
+		@view = params[:view] ? params[:view] : 'default'
 		@item_id = params[:item_id]
 		@btime = params[:btime]
 		@etime = params[:etime]
@@ -62,6 +63,9 @@ class Project::FinanceController < Project
 		@payment.user_id = @logged_in_user.id
 		@item = Item.find(params[:item_id])
 		@item.item_payments << @payment
+
+		#<%=@view == 'payments' ? '' : 'active'%>
+		add_notification(@logged_in_user.username,'income_finance_check',"/project/finance/search?item_id=#{@item.id}&view=payments","提交了工程收款信息")
 		render :text=>'parent.window.location.reload();'
 	end
 	def check

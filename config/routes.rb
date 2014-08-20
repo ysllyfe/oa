@@ -67,7 +67,11 @@ Rails.application.routes.draw do
   #超级管理(用户，角色，角色组)
   resources :accounts do
     post 'search',on: :collection
-    get 'rolegroups',on: :member
+    #get 'rolegroups',on: :member
+
+    #用户角色管理
+    get 'roles',on: :member
+    get 'role_ajax_change',on: :member
   end
   resources :roles
   resources :rolegroups do
@@ -105,7 +109,10 @@ Rails.application.routes.draw do
   get 'notifications' => 'notifications#index'
   put 'notifications' => 'notifications#show'
   #个人相关
-  resources :settings do 
-    put 'userconfig', on: :collection
+  resources :settings do
+    collection do
+      post 'passwd' => 'settings#passwd!'
+      put 'userconfig'
+    end
   end
 end

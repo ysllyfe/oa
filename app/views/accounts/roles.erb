@@ -1,0 +1,82 @@
+<div class="page-header">
+	<h1>
+		用户角色管理
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			<%=@user.username%>
+		</small>
+	</h1>
+</div>
+
+<div class="alert alert-info">
+	<button data-dismiss="alert" class="close" type="button">
+		<i class="ace-icon fa fa-times"></i>
+	</button>
+	<strong><%=@user.username%></strong>
+	的角色管理
+	<br>
+</div>
+
+
+<div class="row">
+<%tmpgroup = nil%>
+<%@roles.each do |f|%>
+<% if tmpgroup != f.group %>
+<% if tmpgroup %>
+						</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+<div class="col-xs-12 col-sm-6">
+	<div class="widget-box">
+		<!-- #section:custom/widget-box.options -->
+		<div class="widget-header">
+			<h5 class="widget-title bigger lighter">
+				<i class="ace-icon fa fa-table"></i>
+				<%=f.group%>
+			</h5>
+
+		</div>
+
+		<!-- /section:custom/widget-box.options -->
+		<div class="widget-body">
+			<div class="widget-main no-padding">
+				<table class="table table-striped table-bordered table-hover">
+					<thead class="thin-border-bottom">
+					<tr>
+							<th class="hidden-480">
+								<i class="ace-icon fa fa-user"></i>
+								角色名称
+							</th>
+
+							<th>
+								中文解释
+							</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+
+					<tbody>
+<%
+tmpgroup = f.group 
+ else %>
+<% end %>
+<tr>
+<td class="hidden-480"><%=f.name%></td>
+<td><%=f.nickname%></td>
+<td>
+<%=_user_role(@user_roles,f.id,@user.id)%>
+</td>
+</tr>				
+<% end %>
+</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>

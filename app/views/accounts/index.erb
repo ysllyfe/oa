@@ -22,7 +22,7 @@
 				最后登陆时间
 			</th>
 			<th class="hidden-480">用户组</th>
-			<th>操作</th>
+			<th>用户角色</th>
 		</tr>
 	</thead>
 
@@ -44,10 +44,7 @@
 		<%=user.last_login_at.to_s(:detail) if user.last_login_at%>
 	</td>
 	<td  class="hidden-480"><%=user.group.name%></td>
-
-	<td>
-		<a href="<%=rolegroups_account_url(user.id)%>">用户角色</a>  <a href="">修改用户</a>
-	</td>
+	<td><a title="" href="<%=roles_account_url(user.id)%>" data-placement="left" data-rel="tooltip" class="btn btn-info btn-xs tooltip-info" data-original-title="用户角色"><i class="ace-icon fa fa-users bigger-120"></i></a></td>
 </tr>
 <% end %>								
 	</tbody>
