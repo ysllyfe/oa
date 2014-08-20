@@ -31,7 +31,16 @@ class AccountsController < Admin
 		render :text=>"user '#{@user.username}' `#{params[:m]}` role #{@role.name}"
 	end
 	def index
-		@users = User.all.order('injob desc,id asc').page(params[:page]).per(15)
+		@tab = params[:tab] ? params[:tab] : 'injob'
+		case @tab
+		when 'injob'
+			injob = 1
+		when 'stop'
+			injob = 2
+		when 'outjob'
+			injob = 0
+		end
+		@users = User.where(softdelete:0,injob:injob).order('id asc').page(params[:page]).per(10)
 		if(params[:id])
 			@users = @users.where(id:params[:id])
 		end
@@ -44,6 +53,14 @@ class AccountsController < Admin
 	def create
 	end
 	def update
+	end
+	def delete
+		@user = User.find(params[:id])
+		@user.update_attribute(:softdelete,true)
+		@user.update_attribute(:injob,0)
+		@user.update_attribute(:enabled,0)
+		@user.update_attribute(:password,SecureRandom.hex(4))
+		render :text=>'window.location.reload();' and return
 	end
 	def destroy
 		@user = User.find(params[:id])

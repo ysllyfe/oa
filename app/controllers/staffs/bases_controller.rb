@@ -7,9 +7,13 @@ class Staffs::BasesController < Staffbox
 		@group = Array.new(group.count)
 		group.each_with_index do |g,index|
 			@group[index] = g
-			@users[index] = {:try=>Array.new(),:notry=>Array.new()}
-			users = User.where(group_id:g.id,injob:true).order('id ASC')
+			@users[index] = {:try=>Array.new(),:notry=>Array.new(),:stop=>Array.new}
+			users = User.where(group_id:g.id,injob:[1,2],softdelete:false).order('id ASC')
 			users.each_with_index do |f,i|
+				if f.injob == 2
+					@users[index][:stop] << f
+					next
+				end
 				if f.info.positive_at
 					@users[index][:notry] << f
 				else

@@ -46,6 +46,15 @@ module UserHelper
 		return info.lunar if !info.lunar.blank?
 		return info.birth
 	end
+	def _job_status(injob)
+		if injob == 0
+			'离职'
+		elsif injob == 1
+			'在职'
+		elsif injob == 2
+			'停薪留职'
+		end
+	end
 	def _staff_operate(m,options={})
 		url = ''
 		case m.class.to_s

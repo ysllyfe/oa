@@ -68,7 +68,7 @@ Rails.application.routes.draw do
   resources :accounts do
     post 'search',on: :collection
     #get 'rolegroups',on: :member
-
+    delete 'delete',on: :member
     #用户角色管理
     get 'roles',on: :member
     get 'role_ajax_change',on: :member
