@@ -137,7 +137,7 @@ class User < ActiveRecord::Base
 		if(rolename.class == Array)
 			t = false
 			rolename.each do |f|
-				t = self.roles.find_by(name: f) ? true : false
+				t = self.has_role?(f)
 				if(t == true)
 					return true
 				end

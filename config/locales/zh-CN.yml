@@ -8,7 +8,7 @@
   submit: "提交表单"
   setting:
     home: "首页"
-    company_name: "龙杰钢贸"
+    company_name: "龙杰控股集团"
     appname: "OA系统"
   login:
     error_404: "对不起，用户不存在"

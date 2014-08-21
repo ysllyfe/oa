@@ -1,5 +1,5 @@
 #encoding:utf-8
-class User < ActiveRecord::Base
+class UserTTTT < ActiveRecord::Base
 	attr_accessor :password
 	validates_presence_of :username
 	validates_presence_of :password, :if=>:password_required?
