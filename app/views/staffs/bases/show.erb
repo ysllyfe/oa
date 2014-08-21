@@ -6,6 +6,10 @@
 		<%=@user.username%>
 	</small>
 	<div class="pull-right">
+<% if @user.needcheck == true %>
+	<a class="btn btn-white btn-danger btn-bold 1" href="<%=allchecked_staffs_basis_url(@user.id)%>">用户信息已全部审核完毕</a>
+|
+<% end %>
 	<a class="btn btn-white btn-warning btn-bold 1" href="###" onclick="toggle_box(this)">
 		<i class="ace-icon fa fa-chevron-up bigger-120 orange"></i>
 		收起

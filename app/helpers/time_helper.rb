@@ -14,4 +14,14 @@ module TimeHelper
 			time.to_s(:m)
 		end
 	end
+	def _date_from(time)
+		num = (Date.today - time).to_i
+		year = (num / 365).to_i
+		limityear = (num % 365)
+		month = (limityear / 30).to_i
+		html = []
+		html << year.to_s + "年" if year > 0
+		html << month.to_s + "月" if month
+		html.join('')
+	end
 end

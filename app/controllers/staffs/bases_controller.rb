@@ -22,7 +22,36 @@ class Staffs::BasesController < Staffbox
 			end
 		end
 	end
-
+	def allchecked
+		if @logged_in_user.has_role?('staff_check')
+		else
+			flash[:error] = "你没有对应的权限访问这个页面，对应的用户权限为`staff_check`"
+			redirect_to deny_url and return
+		end
+		@user = User.find(params[:id])
+		@user.update_attribute(:needcheck,false)
+		redirect_to needcheck_staffs_bases_url and return
+	end
+	def needcheck
+		if @logged_in_user.has_role?('staff_check')
+		else
+			flash[:error] = "你没有对应的权限访问这个页面，对应的用户权限为`staff_check`"
+			redirect_to deny_url and return
+		end
+		@submenu = t("sidebar.staff.audit")
+		@breadcrumbs << [t("sidebar.staff.audit"),needcheck_staffs_bases_url]
+		@users = User.where(injob:[1,2],softdelete:false,needcheck:true).order('updated_at desc').page(params[:page]).per(20)
+	end
+	def outjob
+		if @logged_in_user.has_role?('staff_check')
+		else
+			flash[:error] = "你没有对应的权限访问这个页面，对应的用户权限为`staff_check`"
+			redirect_to deny_url and return
+		end
+		@submenu = t("sidebar.staff.outwork")
+		@breadcrumbs << [t("sidebar.staff.outwork"),outjob_staffs_bases_url]
+		@users = User.where(injob:0,softdelete:false).order('id desc').page(params[:page]).per(20)
+	end
 	def show
 		@user = User.find(params[:id])
 		@infos = @user.infos
@@ -33,8 +62,6 @@ class Staffs::BasesController < Staffbox
 		@contacts = @user.contacts.all.order('id asc')
 		@attachments = @user.attachments
 	end
-
-
 	private
 	def set_submenu_and_breadcrumbs
 		@submenu = t("sidebar.staff.injob")

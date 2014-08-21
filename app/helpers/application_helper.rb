@@ -33,7 +33,7 @@ module ApplicationHelper
 			open ? 'active open' : 'active' 
 		end
 	end
-	def _sidebar_menu(name,icon,url='')
+	def _sidebar_menu(name,icon,url='',num=0,cls='badge-danger')
 		cls = arrow = ''
 		html = []
 		if url.blank?
@@ -45,15 +45,21 @@ module ApplicationHelper
 		html << "<i class='menu-icon fa #{icon}'></i>"
 		html << '<span class="menu-text"> '
 		html << t("sidebar.#{name}")
+		if num != 0
+			html << "<span class=\"badge #{cls}\">#{num}</span>"
+		end
 		html << "</span>#{arrow}</a><b class='arrow'></b>"
 		return raw html.join('')
 	end
-	def _sidebar_submenu(name,url)
+	def _sidebar_submenu(name,url,num=0,cls='badge-danger')
 		active = t("sidebar.#{name}") == @submenu ? 'active' : ''
 		html = []
 		html << "<li class='#{active}'>"
 		html << "<a href='#{url}'><i class='menu-icon fa fa-caret-right'></i>"
 		html << t("sidebar.#{name}")
+		if num != 0
+			html << "<span class=\"badge #{cls}\">#{num}</span>"
+		end
 		html << "</a><b class='arrow'></b></li>"
 		return raw html.join('')
 	end

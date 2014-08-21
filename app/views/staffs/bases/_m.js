@@ -42,3 +42,4 @@ ace.enable_searchbox_autocomplete = function (e) {
     } catch (a) {
     }
 };
+$('[data-rel=tooltip]').tooltip();

@@ -1,0 +1,37 @@
+<div class="page-header">
+	<h1>
+		系统管理
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			用户管理
+		</small>
+	</h1>
+</div>
+
+<div class="tabbable">
+<ul id="myTab" class="nav nav-tabs">
+<li class="<%=@tab == 'injob' ? 'active' : ''%>">
+	<a href="<%=accounts_url(:tab=>'injob')%>">
+		<i class="green ace-icon fa fa-home bigger-120"></i>
+		在职员工
+	</a>
+</li>
+
+<li class="<%=@tab == 'stop' ? 'active' : ''%>">
+	<a href="<%=accounts_url(:tab=>'stop')%>">
+		停薪留职员工
+	</a>
+</li>
+<li class="<%=@tab == 'outjob' ? 'active' : ''%>">
+	<a href="<%=accounts_url(:tab=>'outjob')%>">
+		离职员工
+	</a>
+</li>
+</ul>
+<div class="tab-content">
+<%=render :partial=>'index',:locals=>{:users=>@users}%>
+<%= paginate @users,:tab=>@tab %>
+
+</div>
+
+</div>

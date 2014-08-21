@@ -18,6 +18,9 @@
 			<th class="hidden-480">
 				提交用户
 			</th>
+			<th class="hidden-480">
+				提交时间
+			</th>
 			<th>对象</th>
 			<th>内容</th>
 			<th class="hidden-480">状态</th>
@@ -31,6 +34,7 @@
 <% @sms.each do |f| %>
 		<tr>
 			<td class="hidden-480"><%=f.user.username%></td>
+			<td class="hidden-480"><%=f.created_at.to_s(:detail)%></td>
 			<td><%=_sms_obj(f)%></td>
 			<td><%=f.info%></td>
 			<td class="hidden-480"><%=_sms_status f.status%></td>

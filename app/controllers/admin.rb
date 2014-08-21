@@ -16,8 +16,21 @@ class Admin < ApplicationController
 		@skin = 'no-skin' if !@skin
 	end
 	def notification_show
+		#顶部提示
 		@notification_count = Notification.where(user_id:logged_in_user.id).count
 		@notifications = Notification.where(user_id:logged_in_user.id).order('id desc').limit(8)
+
+
+		#need cache
+		
+		#sidebar提示
+		#员工需审核
+		@l_sidebar_staff_audit_count = User.where(needcheck:true).count
+		#利润表需审核
+		@l_sidebar_income_audit_count = Income.where(submit:1,checked:false).count
+		#短信需审核
+		@l_sidebar_sms_audit_count = Sms.where("status != 'Command complateted successfully'").count
+
 	end
 	private
 	def set_sidebar_breadcrumbs

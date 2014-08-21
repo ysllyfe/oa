@@ -22,7 +22,11 @@ Rails.application.routes.draw do
 
   #员工档案
   namespace :staffs do
-    resources :bases
+    resources :bases do 
+      get 'outjob',on: :collection
+      get 'needcheck',on: :collection
+      get 'allchecked',on: :member
+    end
     #通用用户姓名直达
     post 'ajax/search' => 'ajax#search'
     #基础信息，个人信息，部门信息，教育，家庭成员，紧急联系人

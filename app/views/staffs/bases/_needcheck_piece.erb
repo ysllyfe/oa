@@ -1,0 +1,9 @@
+<tr>
+<td><%=user.username%></td>
+<td class="hidden-480"><%=user.department.post%></td>
+<td class="hidden-480"><%=user.department.department%></td>
+<td><%=user.info.entry_at%></td>
+<td><a title="" data-rel="tooltip" class="tooltip-success tooltip-info" href="<%=staffs_basis_url(user.id)%>" data-placement="left" data-original-title="查看需审核信息">
+				<i class="ace-icon fa fa-edit bigger-120"></i>
+		</a></td>
+</tr>

@@ -4,9 +4,15 @@
 <% @user[:notry].each do |t|%>
 <%=render :partial=>'piece',:locals=>{:t=>t}%>
 <% end %>
-<tr class=""><td>--------</td></tr>
+<tr><td colspan="10" align="center">------以下为试用期员工------</td></tr>
 <% @user[:try].each do |t|%>
 <%=render :partial=>'piece',:locals=>{:t=>t}%>
+<% end %>
+<% if @user[:stop].count > 0 %>
+<tr><td colspan="10" align="center">------以下为停薪留职员工------</td></tr>
+<% @user[:stop].each do |t|%>
+<%=render :partial=>'piece',:locals=>{:t=>t}%>
+<% end %>
 <% end %>
 </tbody>
 </table>

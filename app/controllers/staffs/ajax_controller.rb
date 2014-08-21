@@ -45,6 +45,7 @@ class Staffs::AjaxController < Staffbox
 		info.sec_end = params[:sec_end]
 		info.security = params[:security]
 		@user.infos << info
+		@user.update_attribute(:needcheck,true)
 		render :text=>'parent.location.reload();' and return
 	end
 	def info_delete
@@ -74,6 +75,7 @@ class Staffs::AjaxController < Staffbox
 		depart = Department.new(s)
 		depart.group_id = group.id
 		@user.departments << depart
+		@user.update_attribute(:needcheck,true)
 		render :text=>'parent.location.reload();' and return
 	end
 	def departments_delete
@@ -98,6 +100,7 @@ class Staffs::AjaxController < Staffbox
 		s = params.require(:education).permit(:school,:specialty,:degree,:start_at,:end_at,:info)
 		edu = Education.new(s)
 		@user.educations << edu
+		@user.update_attribute(:needcheck,true)
 		render :text=>'parent.location.reload();' and return
 	end
 	def edu_delete
@@ -123,6 +126,7 @@ class Staffs::AjaxController < Staffbox
 		s = params.require(:family).permit(:relationship,:name,:phone,:workunits,:address)
 		family = Family.new(s)
 		@user.families << family
+		@user.update_attribute(:needcheck,true)
 		render :text=>'parent.location.reload();' and return
 	end
 
@@ -147,6 +151,7 @@ class Staffs::AjaxController < Staffbox
 		s = params.require(:contact).permit(:relationship,:name,:phone,:address)
 		contact = Contact.new(s)
 		@user.contacts << contact
+		@user.update_attribute(:needcheck,true)
 		render :text=>'parent.location.reload();' and return
 	end
 	def contact_delete
