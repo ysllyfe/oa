@@ -43,6 +43,7 @@
 			<%=_sidebar_submenu('staff.injob',staffs_bases_url)%>
 			<%=_sidebar_submenu('staff.audit',needcheck_staffs_bases_url,@l_sidebar_staff_audit_count)%>
 			<%=_sidebar_submenu('staff.outwork',outjob_staffs_bases_url)%>
+			<%=_sidebar_submenu('staff.group',staffs_groups_url)%>
 		</ul>
 	</li>
 
@@ -58,7 +59,12 @@
 	</li>
 
 	<li class="<%=_sidebar_active("menu.payslip")%>">
-		<%=_sidebar_menu('menu.payslip','fa-cny',payslips_url)%>
+		<%=_sidebar_menu('menu.payslip','fa-cny')%>
+		<ul class="submenu">
+			<%=_sidebar_submenu('payslip.my',my_payslips_url)%>
+			<%=_sidebar_submenu('payslip.adm',payslips_url)%>
+			<%=_sidebar_submenu('payslip.wage',payslips_users_url)%>
+		</ul>
 	</li>
 
 	<li class="<%=_sidebar_active("menu.sms")%>">

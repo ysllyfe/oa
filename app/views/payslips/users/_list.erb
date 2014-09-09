@@ -1,0 +1,18 @@
+<table class="table table-striped table-hover">
+<thead><tr><th>姓名</th><th>工资</th><th class="hidden-480">职位</th><th class="hidden-480">部门</th><th class="hidden-480">级别</th><th class="hidden-480">入职时间</th><th>操作</th></tr></thead>
+<tbody>
+<% @user[:notry].each do |t|%>
+<%=render :partial=>'piece',:locals=>{:t=>t}%>
+<% end %>
+<tr><td colspan="10" align="center">------以下为试用期员工------</td></tr>
+<% @user[:try].each do |t|%>
+<%=render :partial=>'piece',:locals=>{:t=>t}%>
+<% end %>
+<% if @user[:stop].count > 0 %>
+<tr><td colspan="10" align="center">------以下为停薪留职员工------</td></tr>
+<% @user[:stop].each do |t|%>
+<%=render :partial=>'piece',:locals=>{:t=>t}%>
+<% end %>
+<% end %>
+</tbody>
+</table>

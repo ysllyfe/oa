@@ -4,5 +4,7 @@
 <td class="hidden-480"><%=user.department.department%></td>
 <td><%=user.info.entry_at%></td>
 <td><%=user.info.departure_at%></td>
-<td></td>
+<td><a class="btn btn-link" data-method='put' href="<%=changestatus_staffs_basis_url(user.id,:status=>'injob')%>">
+		重新入职
+	</a></td>
 </tr>

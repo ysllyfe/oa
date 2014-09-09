@@ -21,7 +21,28 @@
 
 										<!-- #section:pages/profile.contact -->
 										
+<div class="profile-contact-info">
+<div class="profile-contact-links align-center">
+<% if !@user.shortleave? %>
+	<a class="btn btn-link" data-method='put' href="<%=changestatus_staffs_basis_url(@user.id,:status=>'shortleave')%>">
+		<i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
+		停薪留职
+	</a>
+<% else %>
+	<a class="btn btn-link" data-method='put' href="<%=changestatus_staffs_basis_url(@user.id,:status=>'injob')%>">
+		<i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
+		重新入职
+	</a>
+<% end %>
 
+	<a class="btn btn-link" data-method='put' href="<%=changestatus_staffs_basis_url(@user.id,:status=>'outjob')%>">
+		<i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
+		强制离职
+	</a>
+</div>
+
+											<div class="space-6"></div>
+										</div>
 
 										<!-- /section:custom/extra.grid -->
 										<div class="hr hr16 dotted"></div>

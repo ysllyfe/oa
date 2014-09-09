@@ -1,6 +1,10 @@
 #encoding:utf-8
 class Project::FinanceController < Project
 	def index
+		if params[:id]
+			@item = Item.find(params[:id])
+			item_profit_rebuild(@item)
+		end
 		@items = Item.all.order('ended asc,group_id asc,id desc')
 	end
 	def ended
@@ -36,7 +40,6 @@ class Project::FinanceController < Project
     @profit = Profit.find_by_sql(@conditions)
     if !@item_id.blank?
     	@item = Item.find(@item_id)
-    	
     	item_payment_rebuild(@item)
     	@payments = @item.item_payments
     	if @payments

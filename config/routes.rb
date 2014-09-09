@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   #员工档案
   namespace :staffs do
+    resources :groups
     resources :bases do 
+      put 'changestatus',on: :member
       get 'outjob',on: :collection
       get 'needcheck',on: :collection
       get 'allchecked',on: :member
@@ -50,6 +52,7 @@ Rails.application.routes.draw do
     resources :incomes do
       get 'original',on: :member
       post 'original'=>'incomes#original!',on: :member
+      get 'print'=>'incomes#print',on: :member
     end
     resources :audit do 
       put 'check',on: :collection
@@ -103,12 +106,16 @@ Rails.application.routes.draw do
   post 'ueditor/fileUp' => 'ueditor#fileUp'
   post 'ueditor/getMovie' => 'ueditor#getMovie'
 
-
-
+  namespace :payslips do 
+    resources :users do
+      delete 'del',:on=>:collection
+    end
+  end
   resources :payslips do 
     get 'my',:on=>:collection
     post 'submit',:on=>:collection
     put 'check',:on=>:member
+
   end
   get 'notifications' => 'notifications#index'
   put 'notifications' => 'notifications#show'

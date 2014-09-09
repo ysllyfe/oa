@@ -10,6 +10,19 @@ class Project::IncomesController < Project
 	def index
 		@incomes = @logged_in_user.incomes.where(checked:false).order('id desc')
 	end
+	def print
+		#print与show与original相同，只是模板不一样
+		@factories = Factory.where(softdelete:false).order('id asc')
+		@steeltypes = Steeltype.where(softdelete:false).order('id asc')
+		@income = Income.find(params[:id])
+		@trucks = @income.trucks
+		@sells = @income.sells
+		@fees = @income.fees
+		@fee_sells = @income.fee_sells
+		@cb = cb_count(@income)
+		@profit = @income.profit
+		render :layout=>'print' and return
+	end
 	def show
 		#show 与original相同，只是模板不一样
 		@factories = Factory.where(softdelete:false).order('id asc')

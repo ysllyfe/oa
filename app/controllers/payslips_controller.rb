@@ -4,10 +4,12 @@ class PayslipsController < Admin
 	before_filter :admin,:except=>[:my]
 
 	def index
+		@submenu = t("sidebar.payslip.adm")
 		@payslips = Payslip.order('id desc').page(params[:page]).per(10)
 	end
 
 	def my
+		@submenu = t("sidebar.payslip.my")
 		@payslips = Payslip.where(checked:true).order('id desc').page(params[:page]).per(10)
 		if(params[:id])
 			@payslip = Payslip.find(params[:id])
@@ -20,6 +22,7 @@ class PayslipsController < Admin
 	end
 
 	def new
+		@submenu = t("sidebar.payslip.adm")
 		@payslip = Payslip.new
 	end
 	def submit
@@ -104,6 +107,10 @@ class PayslipsController < Admin
 		if @payslip.checked == true
 			@payslip.update_attribute(:checked,false)
 		else
+			group = Group.where(system:1).collect{|x| x.id}
+			msg = @payslip.name + '已上传至OA'
+			url = my_payslips_url
+			send_sms_notification_by_group(group,msg,url)
 			@payslip.update_attribute(:checked,true)
 		end
 		render :text=>'window.location.reload();' and return

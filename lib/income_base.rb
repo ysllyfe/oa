@@ -12,7 +12,7 @@ module IncomeBase
 		profit = profits.inject(0.0){|mem,var| mem + _round(var.profits)}
 		profitrate_yun = _round(profit / weight)
 		profitrate_percent = _round(profit / price) * 100
-		item.update_attributes({:weight=>weight,:iweight=>iweight,:price=>price,:profit=>profit,:profitrate_percent=>profitrate_percent,:profitrate_yun=>profitrate_yun})
+		item.update_attributes({:weight=>_round(weight),:iweight=>_round(iweight),:price=>_round(price),:profit=>_round(profit),:profitrate_percent=>profitrate_percent,:profitrate_yun=>profitrate_yun})
 	end
 	def item_payment_rebuild(item)
 		payments = item.item_payments.where(is_checked: true)

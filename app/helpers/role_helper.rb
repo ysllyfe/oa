@@ -4,9 +4,10 @@ module RoleHelper
 		#check-square-o
 		#times-circle
 		icon = checked ? 'fa-check-square-o' : 'fa-times-circle'
-		cls = checked ? 'btn  btn-xs btn-success' : 'btn  btn-xs btn-danger'
+		text = checked ? '取消审核' : '通过审核'
+		cls = checked ? 'btn  btn-xs btn-danger' : 'btn  btn-xs btn-success'
 		html << "<a href='#{url}' class='#{cls}' data-remote='true' data-method='#{method}' data-confirm='' rel='nofollow'>"
-		html << "<i class='ace-icon fa #{icon} bigger-110 icon-only'></i>"
+		html << "#{text}"
 		html << '</a> | '
 		if @logged_in_user.has_role?(role)
 			raw html.join("")

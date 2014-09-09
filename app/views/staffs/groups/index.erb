@@ -1,0 +1,37 @@
+<div class="page-header">
+	<h1>
+		员工管理
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			部门管理
+		</small>
+	</h1>
+</div>
+
+<% @groups.each do |f| %>
+<div class="col-xs-12 col-sm-6 widget-container-col ui-sortable">
+<!-- #section:custom/widget-box -->
+<div class="widget-box">
+	<div class="widget-header">
+		<h5 class="widget-title"><%=f.name%></h5>
+
+		<!-- #section:custom/widget-box.toolbar -->
+		<div class="widget-toolbar">
+			<div class="widget-menu">
+			<a href="<%=new_staffs_group_url(:group_id=>f.id)%>">
+				<i class="ace-icon fa fa-plus"></i>
+			</a>
+			</div>
+		</div>
+
+		<!-- /section:custom/widget-box.toolbar -->
+	</div>
+
+	<div class="widget-body">
+		<div class="widget-main no-padding">
+<%=render :partial=>'group',:locals=>{:departs=>f.group_departments}%>
+		</div>
+	</div>
+</div>
+</div>
+<% end %>

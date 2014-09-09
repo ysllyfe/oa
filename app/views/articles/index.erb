@@ -38,11 +38,11 @@
 	<td>
 <% if art.is_checked == 1 %>
 <a class="btn btn-xs btn-warning" data-method="put" data-confirm="取消审核？" rel="nofollow" href="<%=check_article_url(art.hash_id)%>">
-<i class="ace-icon fa fa-undo bigger-120"></i>
+取消审核
 </a>
 <% else %>
 <a class="btn btn-xs btn-success" data-method="put" data-confirm="审核通过？" rel="nofollow" href="<%=check_article_url(art.hash_id)%>">
-<i class="ace-icon fa fa-check-square-o bigger-120"></i>
+通过审核
 </a>
 <% end %>
 <a href="<%=edit_article_url(art.hash_id)%>" class="btn btn-xs btn-info">

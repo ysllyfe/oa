@@ -8,6 +8,12 @@ class NoticesController < Admin
 		if @notice.checked == true
 			@notice.update_attribute(:checked,false)
 		else
+			if @notice.groups
+				group = @notice.groups.collect{|x| x.id}
+				msg = "新通知：" + @notice.title
+				url = notice_url(@notice)
+				send_sms_notification_by_group(group,msg,url)
+			end
 			@notice.update_attribute(:checked,true)
 		end
 		render :text=>'window.location.reload();'

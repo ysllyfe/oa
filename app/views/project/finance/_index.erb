@@ -36,7 +36,7 @@ else
 end
  %>
 <tr>
-<td><%=t.id%></td>
+<td><a href="<%=project_finance_index_url(:id=>t.id)%>"><%=t.id%></a></td>
 <td><%=_tip_item t,search_project_finance_index_url(:item_id=>t.id)%><%=_item_status(t)%></td>
 <td><%=t.weight%></td>
 <td align="right">

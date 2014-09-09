@@ -1,0 +1,6 @@
+body{line-height: 1;font-size:9pt;}
+code{background:#fff;color:#333;}
+.table{margin-bottom:0;}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{line-height:1em;font-size:9pt;}
+blockquote{font-size:9pt;padding:0;margin:0;}
+h1,h2,h3,h4{font-size:9pt;margin:0;}

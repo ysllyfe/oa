@@ -63,6 +63,10 @@ class ArticlesController < Admin
 		if @article.is_checked == 1
 			@article.update_attribute(:is_checked,0)
 		else
+			group = @article.groups.collect{|x| x.id}
+			msg = "新制度：" + @article.title
+			url = article_url(@article)
+			send_sms_notification_by_group(group,msg,url)
 			@article.update_attribute(:is_checked,1)
 		end
 		redirect_to articles_url and return

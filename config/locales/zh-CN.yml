@@ -28,9 +28,14 @@
       injob: "在职员工档案"
       audit: "需审核员工档案"
       outwork: "离职员工"
+      group: "部门管理"
     project:
       my: "我的利润表"
       search: "工程款查询"
       audit: "利润表审核"
       finance: "利润表查询"
       info: "合同摘要"
+    payslip:
+      my: "我的工资单"
+      adm: "工资单管理"
+      wage: "用户工资管理"

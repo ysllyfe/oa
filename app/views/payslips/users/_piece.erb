@@ -1,0 +1,14 @@
+<tr>
+	<td><img src="<%=t.photos.url(:s)%>" class="profile" /><%=t.username%></td>
+	<td><%=t.recent_wage%></td>
+	<td class="hidden-480"><%=t.department.post%></td>
+	<td class="hidden-480"><%=t.department.department%></td>
+	<td class="hidden-480"><%=t.department.level%></td>
+	<td class="hidden-480"><%=t.info.entry_at%></td>
+	<td>
+		<a title="" data-rel="tooltip" class="tooltip-success tooltip-info" href="<%=payslips_user_url(t)%>" data-placement="left" data-original-title="查看详情">
+				<i class="ace-icon fa fa-edit bigger-120"></i>
+		</a>
+
+	</td>
+</tr>

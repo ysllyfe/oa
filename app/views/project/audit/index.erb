@@ -22,10 +22,10 @@
 <tr class="<%=profit_notice(f.profit,f.item)%>">
 	<td><%=f.time.to_s(:friendly)%></td>
 	<td><a href="<%=project_income_url(f.id,:from=>request.url)%>"><%=f.item.name if f.item%></a></td>
-	<td><%=f.profit.weight%></td>
-	<td><%=f.profit.iweight%></td>
-	<td><%=yuan f.profit.price%></td>
-	<td><%=yuan f.profit.profits%></td>
+	<td><%=_round f.profit.weight%></td>
+	<td><%=_round f.profit.iweight%></td>
+	<td><%=yuan _round f.profit.price%></td>
+	<td><%=yuan _round f.profit.profits%></td>
 	<td><%=profit_count(f.profit.profits,f.profit.iweight)%></td>
 	<td class="hidden-480"><%=_delvery_user(f.users)%></td>
 

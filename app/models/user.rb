@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 	mount_uploader :photos, AvatarUploader
 	
 	has_many :incomes
+	has_many :wages
 	has_many :infos,dependent: :destroy
 	has_one :staff,dependent: :destroy
 	has_many :departments,dependent: :destroy
@@ -28,6 +29,27 @@ class User < ActiveRecord::Base
 	before_save :encrypt_password
 	belongs_to :group
 
+	STATUS = {
+		:outjob => 0,
+		:injob => 1,
+		:shortleave => 2
+	}
+	
+	def shortleave?
+		return self.injob == STATUS[:shortleave]
+	end
+	def injob?
+		return self.injob != STATUS[:outjob]
+	end
+	def outjob?
+		return self.injob == STATUS[:outjob]
+	end
+
+	def recent_wage
+		return '' if self.wages.blank?
+		wage = self.wages.order('start_at desc').first
+		return "#{wage.part_1}-#{wage.part_2}-#{wage.part_3}"
+	end
 	def method_missing(method,*args)
 		method_name = method.to_s
     super(method, *args)

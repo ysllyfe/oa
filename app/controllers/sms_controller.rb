@@ -47,7 +47,7 @@ class SmsController < Admin
 		end
 		phones = departs_phones = smsgroup_phones = []
 		if !@sm.departments.blank?
-			user = User.where(injob:true,group_department_id:@sm.departments.split(','))
+			user = User.where(injob:1,group_department_id:@sm.departments.split(','))
 			departs_phones = user.collect{|u| u.phone}
 		end
 		if !@sm.smsgroups.blank?

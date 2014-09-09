@@ -1,0 +1,27 @@
+<div class="row">						
+<%@trucks.each do |truck|%>
+<div class="col-xs-12 col-sm-6">
+	<div class="widget-body">
+		<div class="widget-main">
+			<span class="pull-left"><%=truck.s1 + '-' + truck.s2 + '-' + truck.s3%></span>
+			<code class="pull-right"><%=_original_sum(truck)%></code>
+<table class="table table-striped table-hover">
+	<%=_simple_thead(t("trucks.original_table"))%>
+	<tbody>
+<%truck.costs.each do |cost|%>
+<tr>
+	<td><%=cost.factory.name%></td>
+	<td><%=cost.steeltype.name%></td>
+	<td><%=cost.format%></td>
+	<td><%=cost.weight%><%=cost.weight_unit%></td>
+	<td><%=cost.price%></td>
+	<td><%=yuan _round(cost.price.to_f*cost.weight.to_f)%></td>
+</tr>
+<% end %>
+	</tbody>
+</table>
+		</div>
+	</div>
+</div>
+<% end %>
+</div>

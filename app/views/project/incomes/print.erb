@@ -1,0 +1,33 @@
+<div class="page-header">
+<h1>
+利润表打印 - <a href="javascript:;" onclick="prn_preview();">打印</a>
+</h1>
+</div>
+<div class="row">
+<div class="col-xs-12">
+
+<p>
+项目名称：<%=@income.item.name%> ， 
+送货日期：<%=@income.time%> ， 送货人员：<%=_delvery_user(@income.users)%>
+</p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-xs-12">
+<h4>原始磅单 <span>非纯线材磅单，运货重量仅供参考</span></h4>
+<%=render 'print_trucks'%>
+
+<h4>销售情况汇总</h4>
+<%=render 'original_sells'%>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-12 col-sm-6">
+<%=render 'original_fees'%>
+</div>
+<div class="col-xs-12 col-sm-6">
+<%=render 'print_total'%>
+</div>
+</div>
+

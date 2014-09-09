@@ -32,6 +32,25 @@ class Staffs::BasesController < Staffbox
 		@user.update_attribute(:needcheck,false)
 		redirect_to needcheck_staffs_bases_url and return
 	end
+	def changestatus
+		if !@logged_in_user.has_role?('staff_check')
+			flash[:error] = "你没有对应的权限访问这个页面，对应的用户权限为`staff_check`"
+			redirect_to deny_url and return
+		end
+		@user = User.find(params[:id])
+		case params[:status]
+		when 'shortleave'
+			@user.update_attribute(:injob,2)
+		when 'outjob'
+			@user.update_attribute(:injob,0)
+			@user.info.update_attribute(:departure_at,Time.now)
+		when 'injob'
+			@user.update_attribute(:injob,1)
+			@user.info.update_attribute(:departure_at,'')
+		end
+
+		redirect_to staffs_bases_url
+	end
 	def needcheck
 		if @logged_in_user.has_role?('staff_check')
 		else

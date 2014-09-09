@@ -14,7 +14,7 @@
 1，共计利润表<%=@profit.count%>张<br />
 2，毛利润（预估）计算方式为：销售金额-进货成本-其它成本<br />
 3，毛利润率（预估）计算方式为：毛利润（预估）/进货重量 <br />
-4，共计收款 <%=@checked_payments.count%> 笔，其中货款 <%=@checked_payments.inject(0.0){|m,v| v.ptype == 1 ? (m + _round(v.money)) : m}%>，营业外收入 <%=@checked_payments.inject(0.0){|m,v| v.ptype == 2 ? (m + _round(v.money)) : m}%> 共计：<%= @checked_payments.inject(0.0){|m,v| m + _round(v.money)}%>元
+4，共计收款 <%=@checked_payments.count%> 笔，其中货款 <%=yuan _round @checked_payments.inject(0.0){|m,v| v.ptype == 1 ? (m + _round(v.money)) : m}%>，营业外收入 <%=yuan _round @checked_payments.inject(0.0){|m,v| v.ptype == 2 ? (m + _round(v.money)) : m}%> 共计：<%= yuan _round @checked_payments.inject(0.0){|m,v| m + _round(v.money)}%>元
 </p></blockquote>
 </div>
 <div class="col-sm-3 col-xs-12">
